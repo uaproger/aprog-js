@@ -6,4 +6,5 @@ export {
 } from './src/aprog.js';
 export { dump, dd } from './src/debugger.js';
 export { redirect } from './src/redirect.js';
+export { router } from './src/router.js';
 export { encrypt, decrypt } from './src/shifrator.js';

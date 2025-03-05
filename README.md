@@ -18,6 +18,57 @@ npm i aprog -D
 
 ### Basic Usage
 
+Підключення router:
+
+```shell
+import Categories from "./pages/Categories";
+import Access from "./pages/Access";
+import Unauthorized from "./pages/Unauthorized";
+
+const routes = [
+  {
+    path: "/categories",
+    component: Categories,
+  },
+  {
+    path: "/access/denied",
+    component: Access,
+  },
+  {
+    path: "/unauthorized",
+    component: Unauthorized,
+  }
+];
+
+document.addEventListener("DOMContentLoaded", async function() {
+  // router
+  const body = document.body;
+  await router({ routes, body, "Page Not Found" });
+});
+
+```
+
+Створення Pages:
+
+```shell
+
+const NamePage = () => {
+  return div({
+    class: "w-full h-screen flex flex-col items-center justify-center text-3xl",
+      value: [
+        div({
+          class: "text-red font-bold text-5xl",
+          value: "Блок №1"
+        }),
+        div({value: "Блок №2"})
+      ]
+  });
+}
+
+export default NamePage;
+
+```
+
 Приклад використання методів формування HTML елементів:
 
 ```shell
