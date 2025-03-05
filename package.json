@@ -2,9 +2,9 @@
   "name": "aprog",
   "version": "1.0.0",
   "description": "Допоміжна бібліотека js",
-  "main": "aprog.js",
+  "main": "index.js",
   "scripts": {
-    "test": "aprog run"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/uaproger/aprog-js/issues"
   },
-  "homepage": "https://github.com/uaproger/aprog-js#readme"
+  "homepage": "https://github.com/uaproger/aprog-js#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "type": "module"
 }
