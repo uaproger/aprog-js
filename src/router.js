@@ -1,4 +1,4 @@
-import NotFound from "NotFound";
+import NotFound from "./NotFound.js";
 
 const router = async ({ routes, main, message = "Page Not Found" }) => {
     const renderRoute = async () => {
