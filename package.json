@@ -1,0 +1,23 @@
+{
+  "name": "aprog",
+  "version": "1.0.0",
+  "description": "Допоміжна бібліотека js",
+  "main": "aprog.js",
+  "scripts": {
+    "test": "aprog run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uaproger/aprog-js.git"
+  },
+  "keywords": [
+    "aprog",
+    "bibliotec"
+  ],
+  "author": "AlexProger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uaproger/aprog-js/issues"
+  },
+  "homepage": "https://github.com/uaproger/aprog-js#readme"
+}
