@@ -116,6 +116,7 @@ dd(int, array, boolean);
 
 Приклад використання gemini:
 
+у файл __.env__ потрібно додати api-ключ *__VITE_GEMINI_KEY=you_api_gemini_key__*
 ```shell
 
 const message = await gemini("Розкажи жарт про програміста!");
