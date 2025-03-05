@@ -4,6 +4,12 @@
 
 *require for dev*
 
+### NPM resource
+
+```shell
+https://www.npmjs.com/package/aprog
+```
+
 ### Installation
 
 ```shell
