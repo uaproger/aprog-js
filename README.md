@@ -33,8 +33,8 @@ import Unauthorized from "./pages/Unauthorized";
 
 const routes = [
   {
-    path: "/categories",
-    component: Categories,
+    path: "/",
+    component: NamePage,
   },
   {
     path: "/access/denied",
@@ -48,8 +48,8 @@ const routes = [
 
 document.addEventListener("DOMContentLoaded", async function() {
   // router
-  const body = document.body;
-  await router({ routes, body, "Page Not Found" });
+  const main = document.getElementById('main');
+  await router({ routes, main, "Page Not Found" });
 });
 
 ```
@@ -114,20 +114,32 @@ dd(int, array, boolean);
 
 ```
 
+Приклад використання gemini:
+
+```shell
+
+const message = await gemini("Розкажи жарт про програміста!");
+console.log(message);
+
+```
+
 Загальний список методів:
 
 - *dump(...args), dd(...args)*
 - *redirect(url, { newTab: bool, replace: bool })*
 - *encrypt(str), decrypt(encryptedStr)*
 
-
 - *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, thead, tbody, tr, th, td, pre* 
 - *_get, GUID, apState, cookie, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
 - *isEmpty, isNull, isFloat, isNumeric, isObject, isArray, isNumber, isString, isPromise, isNull, isFloat, isNumeric, isObject*
 
+- *router({ routes, main, "Page Not Found" })*
+
+- *gemini(message)*
 
 ### Info
 
+- Додано безплатний чат із Gemini
 - З часом будуть додаватися можливості створення додаткових інструментів
 
 
