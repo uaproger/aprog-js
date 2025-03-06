@@ -1,5 +1,6 @@
 export const mathInput = (target) => {
     const enter = target.value.includes("=");
+    let result = target.value;
     if (enter) {
         const parts = target.value.slice(0, -1).split(/([\+\-\*\/])/);
 
@@ -7,7 +8,6 @@ export const mathInput = (target) => {
         const operator = parts[1];
         const num2 = Number(parts[2]);
 
-        let result;
         switch (operator) {
             case '+': result = num1 + num2; break;
             case '-': result = num1 - num2; break;
@@ -18,4 +18,6 @@ export const mathInput = (target) => {
 
         target.value = result;
     }
+
+    return result;
 }

@@ -128,10 +128,16 @@ console.log(message);
 
 ```shell
 
-onInput: (event) => mathInput(event.target)
+onInput: (event) => {
+  const res = mathInput(event.target);
+  console.log(res);
+}
 
 ```
-Результат: 4
+Результат: 4 *(повертається з функції та встановлює значення у input)*
+```shell
+<input value="4">
+```
 
 ########## ########## ########## ########## ##########
 
