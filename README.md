@@ -116,13 +116,24 @@ dd(int, array, boolean);
 
 Приклад використання gemini:
 
-у файл __.env__ потрібно додати api-ключ *__VITE_GEMINI_KEY=you_api_gemini_key__*
+у файл __.env__ потрібно додати api-ключ __VITE_GEMINI_KEY=you_api_gemini_key__
 ```shell
 
 const message = await gemini("Розкажи жарт про програміста!");
 console.log(message);
 
 ```
+
+Робота з __mathInput__: в input вводимо 2+2=
+
+```shell
+
+onInput: (event) => mathInput(event.target)
+
+```
+Результат: 4
+
+########## ########## ########## ########## ##########
 
 Загальний список методів:
 
@@ -137,6 +148,8 @@ console.log(message);
 - *router({ routes, main, "Page Not Found" })*
 
 - *gemini(message)*
+
+- *mathInput(event.target)*
 
 ### Info
 
