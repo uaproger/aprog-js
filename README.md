@@ -144,7 +144,7 @@ onInput: (event) => {
 Загальний список методів:
 
 - *dump(...args), dd(...args)*
-- *redirect(url, { newTab: bool, replace: bool })*
+- *redirect(url, { newTab: bool, replace: bool }), reload(delaySeconds)*
 - *encrypt(str), decrypt(encryptedStr)*
 
 - *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, thead, tbody, tr, th, td, pre* 
