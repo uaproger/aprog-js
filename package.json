@@ -1,6 +1,6 @@
 {
   "name": "aprog",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "Допоміжна бібліотека js",
   "main": "index.js",
   "scripts": {

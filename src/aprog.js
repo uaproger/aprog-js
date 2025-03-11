@@ -903,11 +903,8 @@ export const caption = (attributes = {}) => {
                 caption.addEventListener(eventType, attrValue);
             } else {
                 switch (name) {
-                    case "top":
-                        caption.style.captionSide = "top";
-                        break;
-                    case "bottom":
-                        caption.style.captionSide = "bottom";
+                    case "side":
+                        caption.style.captionSide = String(attrValue);
                         break;
                     case "class":
                         caption.className = String(attrValue);
