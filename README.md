@@ -147,7 +147,7 @@ onInput: (event) => {
 - *redirect(url, { newTab: bool, replace: bool }), reload(delaySeconds)*
 - *encrypt(str), decrypt(encryptedStr)*
 
-- *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, thead, tbody, tr, th, td, pre* 
+- *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, caption, thead, tbody, tr, th, td, pre* 
 - *_get, GUID, apState, cookie, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
 - *isEmpty, isNull, isFloat, isNumeric, isObject, isArray, isNumber, isString, isPromise, isNull, isFloat, isNumeric, isObject*
 

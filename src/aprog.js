@@ -894,6 +894,63 @@ export const table = (attributes = {}) => {
 }
 
 
+export const caption = (attributes = {}) => {
+    let caption = document.createElement("caption");
+    if (attributes) {
+        Object.entries(attributes).forEach(([name, attrValue]) => {
+            if (name.startsWith('on') && typeof attrValue === 'function') {
+                const eventType = name.slice(2).toLowerCase();
+                caption.addEventListener(eventType, attrValue);
+            } else {
+                switch (name) {
+                    case "top":
+                        caption.style.captionSide = "top";
+                        break;
+                    case "bottom":
+                        caption.style.captionSide = "bottom";
+                        break;
+                    case "class":
+                        caption.className = String(attrValue);
+                        break;
+                    case "value":
+                        if (isArray(attrValue)) {
+                            attrValue.forEach((element) => {
+                                isHtmlElement(element) ? caption.append(element) : caption.innerHTML = String(element)
+                            })
+                        } else {
+                            isHtmlElement(attrValue) ? caption.append(attrValue) : caption.innerHTML = String(attrValue)
+                        }
+                        break;
+                    case "style":
+                        Object.entries(attrValue).forEach(([styleName, styleValue]) => {
+                            switch (styleName) {
+                                case "zIndex":
+                                    caption.style[styleName] = `99999${styleValue}`;
+                                    break;
+                                default:
+                                    caption.style[styleName] = styleValue;
+                                    break;
+                            }
+                        });
+                        break;
+                    default:
+                        if (name.startsWith("data")) {
+                            const kebabName = name
+                                .replace(/^data/, "data")
+                                .replace(/([A-Z])/g, "-$1")
+                                .toLowerCase();
+                            caption.setAttribute(kebabName, String(attrValue));
+                        } else {
+                            caption.setAttribute(name, String(attrValue));
+                        }
+                }
+            }
+        });
+    }
+    return caption;
+}
+
+
 export const thead = (attributes = {}) => {
     let thead = document.createElement("thead");
     if (attributes) {
