@@ -93,14 +93,15 @@ export const isNull = (value) => {
 const isHtmlElement = (value) => {
     const htmlElements = [
         'HTMLDivElement', "HTMLAnchorElement", 'HTMLSpanElement',
-        'HTMLButtonElement', 'HTMLSelectElement',
+        'HTMLButtonElement', 'HTMLSelectElement', "HTMLMainElement",
         'HTMLInputElement', 'HTMLUlElement', "Promise",
-        'HTMLListElement', 'HTMLLabelElement',
+        'HTMLListElement', 'HTMLLabelElement', "HTMLTableCaptionElement",
         'HTMLHRElement', 'SVGSVGElement', 'HTMLPreElement',
         'Promise', "HTMLTextAreaElement", "HTMLTableElement",
         "HTMLTHeaderElement", "HTMLTBodyElement", "HTMLTRElement",
         "HTMLTHElement", "HTMLTDElement", "HTMLTableSectionElement",
-        "HTMLTableRowElement", "HTMLTableCellElement", "HTMLImageElement"
+        "HTMLTableRowElement", "HTMLTableCellElement", "HTMLImageElement",
+        "HTMLSectionElement"
     ]
 
     return htmlElements.some((element) => {
