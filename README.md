@@ -148,7 +148,7 @@ onInput: (event) => {
 - *encrypt(str), decrypt(encryptedStr)*
 
 - *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, caption, thead, tbody, tr, th, td, pre* 
-- *_get, GUID, apState, cookie, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
+- *_get, GUID, apState, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
 - *isEmpty, isNull, isFloat, isNumeric, isObject, isArray, isNumber, isString, isPromise, isNull, isFloat, isNumeric, isObject*
 
 - *router({ routes, main, "Page Not Found" })*
@@ -156,6 +156,8 @@ onInput: (event) => {
 - *gemini(message)*
 
 - *mathInput(event.target)*
+
+- *cookie, storage*
 
 ### Info
 

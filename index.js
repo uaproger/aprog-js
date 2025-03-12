@@ -1,6 +1,6 @@
 export {
     div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea,
-    table, caption, thead, tbody, tr, th, td, pre, _get, GUID, isEmpty, apState, cookie, date, pause, apFetch,
+    table, caption, thead, tbody, tr, th, td, pre, _get, GUID, isEmpty, apState, date, pause, apFetch,
     chars, isNull, isFloat, isNumeric, isObject, elementToObject, copyText, scrollToTop, scrollToBottom,
     firstKey, isArray, checkArrays, isNumber, isString, isPromise, ucfirst, deepEqual, nodeListToObject
 } from './src/aprog.js';
@@ -10,3 +10,4 @@ export { router, navigateTo } from './src/router.js';
 export { encrypt, decrypt } from './src/shifrator.js';
 export { gemini } from './src/OpenAI.js';
 export { mathInput } from './src/math.js';
+export { cookie, storage } from './src/storage.js';

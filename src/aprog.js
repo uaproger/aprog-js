@@ -1324,33 +1324,6 @@ export const GUID = () => {
     });
 }
 
-export const cookie = {
-    get(name) {
-        const cookies = document.cookie.split('; ');
-        for (let cookie of cookies) {
-            let [key, value] = cookie.split('=');
-            if (key === name) {
-                return decodeURIComponent(value);
-            }
-        }
-        return null;
-    },
-
-    set(name, value, days = 7) {
-        let expires = "";
-        if (days) {
-            let date = new Date();
-            date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
-    },
-
-    delete(name) {
-        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    }
-};
-
 export const checkArrays = (arr1, arr2, checkAll = false) => {
     const set1 = new Set(arr1);
     if (checkAll) {
