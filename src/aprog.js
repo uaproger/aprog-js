@@ -241,7 +241,7 @@ export const input = (attributes = {}) => {
     let input = document.createElement("input");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 input.addEventListener(eventType, attrValue);
             } else {
@@ -290,7 +290,7 @@ export const label = (attributes = {}) => {
     label.setAttribute("for", "...");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 label.addEventListener(eventType, attrValue);
             } else {
@@ -341,7 +341,7 @@ export const form = (attributes = {}) => {
     let form = document.createElement("form");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 form.addEventListener(eventType, attrValue);
             } else {
@@ -401,7 +401,7 @@ export const div = (attributes = {}) => {
     let div = document.createElement("div");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 div.addEventListener(eventType, attrValue);
             } else {
@@ -452,7 +452,7 @@ export const a = (attributes = {}) => {
     let a = document.createElement("a");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 a.addEventListener(eventType, attrValue);
             } else {
@@ -503,7 +503,7 @@ export const span = (attributes = {}) => {
     let span = document.createElement("span");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 span.addEventListener(eventType, attrValue);
             } else {
@@ -554,7 +554,7 @@ export const textarea = (attributes = {}) => {
     let textarea = document.createElement("textarea");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 textarea.addEventListener(eventType, attrValue);
             } else {
@@ -605,7 +605,7 @@ export const pre = (attributes = {}) => {
     let pre = document.createElement("pre");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 pre.addEventListener(eventType, attrValue);
             } else {
@@ -656,7 +656,7 @@ export const button = (attributes = {}) => {
     let button = document.createElement("button");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 button.addEventListener(eventType, attrValue);
             } else {
@@ -708,7 +708,7 @@ export const select = (attributes = {}) => {
     let option = document.createElement("option");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 select.addEventListener(eventType, attrValue);
             } else {
@@ -848,7 +848,7 @@ export const table = (attributes = {}) => {
     let table = document.createElement("table");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 table.addEventListener(eventType, attrValue);
             } else {
@@ -899,7 +899,7 @@ export const caption = (attributes = {}) => {
     let caption = document.createElement("caption");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 caption.addEventListener(eventType, attrValue);
             } else {
@@ -953,7 +953,7 @@ export const thead = (attributes = {}) => {
     let thead = document.createElement("thead");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 thead.addEventListener(eventType, attrValue);
             } else {
@@ -1004,7 +1004,7 @@ export const tbody = (attributes = {}) => {
     let tbody = document.createElement("tbody");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 tbody.addEventListener(eventType, attrValue);
             } else {
@@ -1055,7 +1055,7 @@ export const tr = (attributes = {}) => {
     let tr = document.createElement("tr");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 tr.addEventListener(eventType, attrValue);
             } else {
@@ -1106,7 +1106,7 @@ export const th = (attributes = {}) => {
     let th = document.createElement("th");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 th.addEventListener(eventType, attrValue);
             } else {
@@ -1157,7 +1157,7 @@ export const td = (attributes = {}) => {
     let td = document.createElement("td");
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 td.addEventListener(eventType, attrValue);
             } else {
@@ -1208,7 +1208,7 @@ export const img = (attributes = {}) => {
     img.alt = "img...";
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
-            if (name.startsWith('on') && typeof attrValue === 'function') {
+            if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
                 const eventType = name.slice(2).toLowerCase();
                 img.addEventListener(eventType, attrValue);
             } else {
@@ -1332,3 +1332,46 @@ export const checkArrays = (arr1, arr2, checkAll = false) => {
         return arr2.some(item => set1.has(item));
     }
 }
+
+const customTitle = (text) => {
+    const title = div({
+        style: {
+            position: "absolute",
+            background: "rgba(0, 0, 0, 0.8)",
+            color: "white",
+            padding: "6px 10px",
+            borderRadius: "5px",
+            fontSize: "14px",
+            whiteSpace: "nowrap",
+            display: "none",
+            pointerEvents: "none",
+            zIndex: 1000,
+        },
+        value: text
+    });
+    document.body.appendChild(title);
+
+    return title;
+};
+
+export const attachCustomTitle = (element, text) => {
+    let tooltip = element._customTooltip;
+
+    if (!tooltip) {
+        tooltip = customTitle(text);
+        element._customTooltip = tooltip;
+    }
+
+    element.addEventListener("mouseenter", () => {
+        tooltip.style.display = "block";
+    });
+
+    element.addEventListener("mousemove", (e) => {
+        tooltip.style.left = `${e.pageX + 10}px`;
+        tooltip.style.top = `${e.pageY + 10}px`;
+    });
+
+    element.addEventListener("mouseleave", () => {
+        tooltip.style.display = "none";
+    });
+};
