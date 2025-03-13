@@ -1,7 +1,7 @@
 import {storage} from "./storage.js";
 import {button, div} from "./aprog.js";
 
-export const Paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, colors = {} } = {}) => {
+export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, colors = {} } = {}) => {
     const defaultColors = {
         defaultColor: "#043458",
         backgroundColor: "#ffffff",
@@ -16,7 +16,7 @@ export const Paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
     const styles = `
         <style>
             .paginate-block {
-                width: 100%;
+                width: 100vw;
                 padding: 0 20px;
                 margin: 20px 0;
                 display: flex;
@@ -116,18 +116,11 @@ export const Paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
         value: "...",
     });
 
-    // const navigateTo = (path) => {
-    //     window.history.pushState("", "", path);
-    // }
-    //
-    // navigateTo(`${window.location.pathname}?page=${currentPage || 1}${!isEmpty(_get("filter", null))
-    //         ? `&filter=${_get("filter")}`
-    //         : ""
-    //     }${!isEmpty(_get("sort", null))
-    //         ? `&sort=${_get('sort')}`
-    //         : ""
-    //     }`
-    // );
+    const navigateTo = (path) => {
+        window.history.pushState("", "", path);
+    }
+
+    navigateTo(`${window.location.pathname}?page=${currentPage || 1}`);
 
     return div({
         class: "paginate-block",
