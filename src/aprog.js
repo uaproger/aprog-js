@@ -1335,15 +1335,17 @@ export const checkArrays = (arr1, arr2, checkAll = false) => {
 
 const customTitle = (text) => {
     const title = div({
+        id: "tooltip",
         style: {
             position: "absolute",
-            background: "rgba(0, 0, 0, 0.8)",
-            color: "white",
             padding: "6px 10px",
-            borderRadius: "5px",
-            fontSize: "14px",
+            display: "block",
+            fontSize: "10px",
             whiteSpace: "nowrap",
-            display: "none",
+            color: "#ffffff",
+            background: "rgba(51, 51, 51, 0.8)",
+            borderRadius: "0.5rem",
+            boxShadow: "0 3 7 rgba(51, 51, 51, 0.8)",
             pointerEvents: "none",
             zIndex: 1000,
         },

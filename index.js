@@ -11,4 +11,4 @@ export { encrypt, decrypt } from './src/shifrator.js';
 export { gemini } from './src/OpenAI.js';
 export { mathInput } from './src/math.js';
 export { cookie, storage } from './src/storage.js';
-export { paginate, parseData } from './src/Paginate.js';
+export { paginate, parseData } from './src/paginate.js';

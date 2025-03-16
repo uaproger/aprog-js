@@ -9,6 +9,7 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
         borderRadius: "0.5rem",
         fontSize: "16px",
         borderWidth: "0.0313rem",
+        border: "border: ${theme.borderWidth} solid ${theme.defaultColor};"
     };
 
     const theme = { ...defaultColors, ...colors };
@@ -33,7 +34,7 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
                 font-weight: 600;
                 color: ${theme.defaultColor};
                 background: ${theme.backgroundColor};
-                border: ${theme.borderWidth} solid ${theme.defaultColor};
+                ${theme.border}
                 border-radius: ${theme.borderRadius};
                 cursor: pointer;
                 box-shadow: ${theme.boxShadow};
