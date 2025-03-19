@@ -1314,7 +1314,17 @@ export const _get = (name, defaulting = null) => {
             : searchParams.get(name);
     }
     return defaulting;
-}
+};
+
+export const _getAll = () => {
+    let url = new URL(window.location.href);
+    let searchParams = new URLSearchParams(url.search);
+    let params = {};
+    searchParams.forEach((value, key) => {
+        params[key] = isFloat(value) || isNumeric(value) ? parseFloat(value) : value;
+    });
+    return params;
+};
 
 export const GUID = () => {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (char) {
@@ -1322,7 +1332,7 @@ export const GUID = () => {
         const value = char === 'x' ? random : (random & 0x3 | 0x8);
         return value.toString(16);
     });
-}
+};
 
 export const checkArrays = (arr1, arr2, checkAll = false) => {
     const set1 = new Set(arr1);
@@ -1331,7 +1341,7 @@ export const checkArrays = (arr1, arr2, checkAll = false) => {
     } else {
         return arr2.some(item => set1.has(item));
     }
-}
+};
 
 const customTitle = (text) => {
     const title = div({

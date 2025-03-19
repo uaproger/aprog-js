@@ -119,9 +119,13 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
 
     const navigateTo = (path) => {
         window.history.pushState("", "", path);
-    }
+    };
 
-    navigateTo(`${window.location.pathname}?page=${currentPage || 1}`);
+    let url = new URL(window.location.href);
+    let searchParams = new URLSearchParams(url.search);
+
+    searchParams.set("page", String(currentPage || 1));
+    navigateTo(`${window.location.pathname}?${searchParams.toString()}`);
 
     return div({
         class: "paginate-block",

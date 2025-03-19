@@ -54,27 +54,6 @@ document.addEventListener("DOMContentLoaded", async function() {
 
 ```
 
-Створення Pages:
-
-```shell
-
-const NamePage = () => {
-  return div({
-    class: "w-full h-screen flex flex-col items-center justify-center text-3xl",
-      value: [
-        div({
-          class: "text-red font-bold text-5xl",
-          value: "Блок №1"
-        }),
-        div({value: "Блок №2"})
-      ]
-  });
-}
-
-export default NamePage;
-
-```
-
 Приклад використання методів формування HTML елементів:
 
 ```shell
@@ -93,6 +72,27 @@ const elDiv = div({
 });
 
 document.body.appendChild(elDiv);
+
+```
+
+Створення Pages:
+
+```shell
+
+const NamePage = () => {
+  return div({
+    class: "w-full h-screen flex flex-col items-center justify-center text-3xl",
+      value: [
+        div({
+          class: "text-red font-bold text-5xl",
+          value: "Блок №1"
+        }),
+        div({value: "Блок №2"})
+      ]
+  });
+}
+
+export default NamePage;
 
 ```
 
@@ -148,7 +148,7 @@ onInput: (event) => {
 - *encrypt(str), decrypt(encryptedStr)*
 
 - *div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea, table, caption, thead, tbody, tr, th, td, pre, attachCustomTitle* 
-- *_get, GUID, apState, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
+- *_get, _getAll, GUID, apState, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
 - *isEmpty, isNull, isFloat, isNumeric, isObject, isArray, isNumber, isString, isPromise, isNull, isFloat, isNumeric, isObject*
 
 - *router({ routes, main, "Page Not Found" })*
