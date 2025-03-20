@@ -103,7 +103,7 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
             buttons.push(createPageButton(count));
         }
         return buttons;
-    }
+    };
 
     const createPageButton = (page) => button({
         class: `paginate-btn ${page === currentPage ? "active" : ""}`,

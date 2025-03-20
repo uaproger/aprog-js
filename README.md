@@ -151,7 +151,9 @@ onInput: (event) => {
 - *_get, _getAll, GUID, apState, date, pause, apFetch, chars, elementToObject, copyText, scrollToTop, scrollToBottom, firstKey, checkArrays, ucfirst, deepEqual, nodeListToObject*
 - *isEmpty, isNull, isFloat, isNumeric, isObject, isArray, isNumber, isString, isPromise, isNull, isFloat, isNumeric, isObject*
 
-- *router({ routes, main, "Page Not Found" })*
+- *router({ routes, main })*
+
+- *navi("/path", {data: "Можливість передачі даних між сторінками"})*
 
 - *gemini(message)*
 

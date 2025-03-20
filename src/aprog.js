@@ -13,8 +13,7 @@ export const pause = (variable) => {
             checkVariable();
         });
     }
-}
-
+};
 
 export const date = (format, timestamp = Date.now()) => {
     const date = new Date(timestamp);
@@ -29,8 +28,7 @@ export const date = (format, timestamp = Date.now()) => {
     };
 
     return format.replace(/[YmdHis]/g, match => map[match]);
-}
-
+};
 
 export const chars = (word) => {
     const cyrillicToLatin = {
@@ -45,50 +43,41 @@ export const chars = (word) => {
         'Ь': '', 'ь': '', 'Ъ': '', 'ъ': '', 'Э': 'E', 'э': 'e', 'Ы': 'Y', 'ы': 'y'
     };
     return word.split('').map(char => cyrillicToLatin[char] || char).join('');
-}
-
+};
 
 // Validates
 export const isArray = (value) => {
     return Object.prototype.toString.call(value) === '[object Array]';
-}
-
+};
 
 export const isObject = (value) => {
     return Object.prototype.toString.call(value) === '[object Object]';
-}
-
+};
 
 export const isPromise = (value) => {
     return Object.prototype.toString.call(value) === '[object Promise]' ||
         (typeof value === 'object' && value !== null && typeof value.then === 'function' && typeof value.catch === 'function');
-}
-
+};
 
 export const isNumber = (value) => {
     return typeof value === 'number' && !Number.isNaN(value);
-}
-
+};
 
 export const isNumeric = (value) => {
     return /^-?\d+(\.\d+)?$/.test(value);
-}
-
+};
 
 export const isFloat = (value) => {
     return !isNaN(value) && Number(value) === value && !Number.isInteger(value);
-}
-
+};
 
 export const isString = (value) => {
     return typeof value === 'string';
-}
-
+};
 
 export const isNull = (value) => {
     return value === null || value === undefined;
-}
-
+};
 
 const isHtmlElement = (value) => {
     const htmlElements = [
@@ -107,8 +96,7 @@ const isHtmlElement = (value) => {
     return htmlElements.some((element) => {
         return Object.prototype.toString.call(value) === `[object ${element}]`;
     });
-}
-
+};
 
 export const isEmpty = (variable) => {
     if (variable === undefined || variable === null) {
@@ -127,8 +115,7 @@ export const isEmpty = (variable) => {
         return false;
     }
     return !variable;
-}
-
+};
 
 export const elementToObject = (element) => {
     const obj = {};
@@ -141,8 +128,7 @@ export const elementToObject = (element) => {
         obj['selectValue'] = element.value;
     }
     return obj;
-}
-
+};
 
 export const nodeListToObject = (nodeList) => {
     return Array.from(nodeList).map((el, index) => ({
@@ -159,8 +145,7 @@ export const nodeListToObject = (nodeList) => {
         ...(el.innerText && {value: el.innerText}),
         index: index
     }));
-}
-
+};
 
 export const deepEqual = (obj1, obj2) => {
     if (obj1 === obj2) return true;
@@ -175,19 +160,16 @@ export const deepEqual = (obj1, obj2) => {
         }
     }
     return true;
-}
-
+};
 
 export const ucfirst = (str) => {
     if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
+};
 
 export const firstKey = (object) => {
     return Object.keys(object)[0] || null;
-}
-
+};
 
 export const copyText = async (element) => {
     try {
@@ -197,8 +179,7 @@ export const copyText = async (element) => {
     } catch (err) {
         console.error('Помилка копіювання! Error:', err);
     }
-}
-
+};
 
 // HTML Elements
 export const options = (object, selected = null, disabled = null) => {
@@ -234,8 +215,7 @@ export const options = (object, selected = null, disabled = null) => {
             }
         });
     }
-}
-
+};
 
 export const input = (attributes = {}) => {
     let input = document.createElement("input");
@@ -282,8 +262,7 @@ export const input = (attributes = {}) => {
         });
     }
     return input;
-}
-
+};
 
 export const label = (attributes = {}) => {
     let label = document.createElement("label");
@@ -334,8 +313,7 @@ export const label = (attributes = {}) => {
         });
     }
     return label;
-}
-
+};
 
 export const form = (attributes = {}) => {
     let form = document.createElement("form");
@@ -394,8 +372,7 @@ export const form = (attributes = {}) => {
         });
     }
     return form;
-}
-
+};
 
 export const div = (attributes = {}) => {
     let div = document.createElement("div");
@@ -445,8 +422,7 @@ export const div = (attributes = {}) => {
         });
     }
     return div;
-}
-
+};
 
 export const a = (attributes = {}) => {
     let a = document.createElement("a");
@@ -496,8 +472,7 @@ export const a = (attributes = {}) => {
         });
     }
     return a;
-}
-
+};
 
 export const span = (attributes = {}) => {
     let span = document.createElement("span");
@@ -547,8 +522,7 @@ export const span = (attributes = {}) => {
         });
     }
     return span;
-}
-
+};
 
 export const textarea = (attributes = {}) => {
     let textarea = document.createElement("textarea");
@@ -598,8 +572,7 @@ export const textarea = (attributes = {}) => {
         });
     }
     return textarea;
-}
-
+};
 
 export const pre = (attributes = {}) => {
     let pre = document.createElement("pre");
@@ -649,8 +622,7 @@ export const pre = (attributes = {}) => {
         });
     }
     return pre;
-}
-
+};
 
 export const button = (attributes = {}) => {
     let button = document.createElement("button");
@@ -700,8 +672,7 @@ export const button = (attributes = {}) => {
         });
     }
     return button;
-}
-
+};
 
 export const select = (attributes = {}) => {
     let select = document.createElement("select");
@@ -786,8 +757,6 @@ export const select = (attributes = {}) => {
     return select;
 };
 
-
-
 export const option = (attributes = {}) => {
     let option = document.createElement("option");
     if (attributes) {
@@ -801,8 +770,7 @@ export const option = (attributes = {}) => {
         });
     }
     return option;
-}
-
+};
 
 export const hr = (attributes = {}) => {
     let hr = document.createElement("hr");
@@ -821,8 +789,7 @@ export const hr = (attributes = {}) => {
         });
     }
     return hr;
-}
-
+};
 
 export const meta = (attributes = {}) => {
     let meta = document.createElement("meta");
@@ -841,8 +808,7 @@ export const meta = (attributes = {}) => {
         });
     }
     return meta;
-}
-
+};
 
 export const table = (attributes = {}) => {
     let table = document.createElement("table");
@@ -892,8 +858,7 @@ export const table = (attributes = {}) => {
         });
     }
     return table;
-}
-
+};
 
 export const caption = (attributes = {}) => {
     let caption = document.createElement("caption");
@@ -946,8 +911,7 @@ export const caption = (attributes = {}) => {
         });
     }
     return caption;
-}
-
+};
 
 export const thead = (attributes = {}) => {
     let thead = document.createElement("thead");
@@ -997,8 +961,7 @@ export const thead = (attributes = {}) => {
         });
     }
     return thead;
-}
-
+};
 
 export const tbody = (attributes = {}) => {
     let tbody = document.createElement("tbody");
@@ -1048,8 +1011,7 @@ export const tbody = (attributes = {}) => {
         });
     }
     return tbody;
-}
-
+};
 
 export const tr = (attributes = {}) => {
     let tr = document.createElement("tr");
@@ -1099,8 +1061,7 @@ export const tr = (attributes = {}) => {
         });
     }
     return tr;
-}
-
+};
 
 export const th = (attributes = {}) => {
     let th = document.createElement("th");
@@ -1150,8 +1111,7 @@ export const th = (attributes = {}) => {
         });
     }
     return th;
-}
-
+};
 
 export const td = (attributes = {}) => {
     let td = document.createElement("td");
@@ -1201,7 +1161,7 @@ export const td = (attributes = {}) => {
         });
     }
     return td;
-}
+};
 
 export const img = (attributes = {}) => {
     let img = document.createElement("img");
@@ -1249,7 +1209,7 @@ export const img = (attributes = {}) => {
         });
     }
     return img;
-}
+};
 
 export const apState = (initialValue) => {
     let state = initialValue;
@@ -1262,7 +1222,7 @@ export const apState = (initialValue) => {
         }
     }
     return [getState, setState];
-}
+};
 
 export const apFetch = async (url, params = {}) => {
     const [data, setData] = apState(null);
@@ -1289,21 +1249,21 @@ export const apFetch = async (url, params = {}) => {
     await fetchData();
 
     return [data, error, isLoading];
-}
+};
 
 export const scrollToTop = () => {
     window.scrollTo({
         top: 0,
         behavior: "smooth",
     });
-}
+};
 
 export const scrollToBottom = () => {
     window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "smooth",
     });
-}
+};
 
 export const _get = (name, defaulting = null) => {
     let url = new URL(window.location.href);

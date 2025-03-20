@@ -1,28 +1,36 @@
 import NotFound from "./NotFound.js";
 
-const router = async ({ routes, main, message = "Page Not Found" }) => {
+export const router = async ({ routes, main }) => {
     const renderRoute = async () => {
-        const routeComponent = await useRoutes(routes, message);
+        const { routeComponent, props } = await useRoutes(routes);
         main.innerHTML = "";
         if (routeComponent) {
-            main.appendChild(routeComponent);
+            const component = await routeComponent(props);
+            main.appendChild(component);
         }
-    }
+    };
+
     window.addEventListener('popstate', renderRoute);
+    window.renderRoute = renderRoute;
+
     await renderRoute();
-}
+};
 
+export const navigateTo = (path, props = {}) => {
+    window.history.pushState(props, "", path);
+};
 
-const navigateTo = (path) => {
-    window.history.pushState("", "", path);
-}
+export const navi = (path, props = {}) => {
+    window.history.pushState(props, "", path);
+    window.renderRoute().then();
+};
 
-
-const useRoutes = async (routes, message) => {
+const useRoutes = async (routes) => {
     const path = window.location.pathname;
     const matchingRoute = routes.find(route => route.path === path);
-    return matchingRoute ? await matchingRoute.component() : NotFound(message);
-}
+    const props = window.history.state || {};
 
-
-export { router, navigateTo };
+    return matchingRoute
+        ? { routeComponent: matchingRoute.component, props }
+        : { routeComponent: NotFound, props };
+};
