@@ -13,3 +13,4 @@ export { gemini } from './src/OpenAI.js';
 export { mathInput } from './src/math.js';
 export { cookie, storage } from './src/storage.js';
 export { paginate, parseData } from './src/paginate.js';
+export { saveItem, loadItem } from './src/secretStorage.js';
