@@ -26,5 +26,5 @@ class Debugger {
 }
 
 const debuggerClass = new Debugger();
-export const dump = (...args) => debuggerClass.dump(args);
-export const dd = (...args) => debuggerClass.dd(args);
+export const dump = (...args) => debuggerClass.dump(...args);
+export const dd = (...args) => debuggerClass.dd(...args);
