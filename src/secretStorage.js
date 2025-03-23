@@ -1,61 +1,21 @@
+import AES from "crypto-js/aes";
+import Utf8 from "crypto-js/enc-utf8";
+
 const DB_NAME = 'secureDB';
 const STORE_NAME = 'secureStore';
 const DB_VERSION = 1;
 
-const getKey = async () => {
-    const password = import.meta.env.VITE_ENCRYPTION_KEY;
-    const encoder = new TextEncoder();
-    const salt = encoder.encode('nasty');
+const SECRET = import.meta.env.VITE_ENCRYPTION_KEY;
 
-    const keyMaterial = await crypto.subtle.importKey(
-        'raw',
-        encoder.encode(password),
-        { name: 'PBKDF2' },
-        false,
-        ['deriveKey']
-    );
-
-    return await crypto.subtle.deriveKey(
-        {
-            name: 'PBKDF2',
-            salt: salt,
-            iterations: 100000,
-            hash: 'SHA-256'
-        },
-        keyMaterial,
-        { name: 'AES-GCM', length: 256 },
-        true,
-        ['encrypt', 'decrypt']
-    );
+const encryptData = (data) => {
+    const encrypted = AES.encrypt(JSON.stringify(data), SECRET);
+    return encrypted.toString(); // отримаємо base64 рядок
 };
 
-const encryptData = async (data) => {
-    const key = await getKey();
-    const iv = crypto.getRandomValues(new Uint8Array(12));
-
-    const encoded = new TextEncoder().encode(JSON.stringify(data));
-    const encrypted = await crypto.subtle.encrypt(
-        { name: 'AES-GCM', iv },
-        key,
-        encoded
-    );
-
-    return {
-        iv: Array.from(iv),
-        data: Array.from(new Uint8Array(encrypted))
-    };
-};
-
-const decryptData = async ({ iv, data }) => {
-    const key = await getKey();
-    const decrypted = await crypto.subtle.decrypt(
-        { name: 'AES-GCM', iv: new Uint8Array(iv) },
-        key,
-        new Uint8Array(data)
-    );
-
-    const decoded = new TextDecoder().decode(decrypted);
-    return JSON.parse(decoded);
+const decryptData = (cipher) => {
+    const bytes = AES.decrypt(cipher, SECRET);
+    const decrypted = bytes.toString(Utf8);
+    return JSON.parse(decrypted);
 };
 
 const openDB = () => {
@@ -74,11 +34,11 @@ const openDB = () => {
 
 export const saveItem = async (id, data) => {
     const db = await openDB();
-    const encrypted = await encryptData(data);
+    const encrypted = encryptData(data);
 
     const tx = db.transaction(STORE_NAME, 'readwrite');
     const store = tx.objectStore(STORE_NAME);
-    store.put({ id, ...encrypted });
+    store.put({ id, data: encrypted });
 
     return tx.complete;
 };
@@ -90,10 +50,10 @@ export const loadItem = async (id) => {
 
     return new Promise((resolve, reject) => {
         const request = store.get(id);
-        request.onsuccess = async () => {
-            if (request.result) {
-                const decrypted = await decryptData(request.result);
-                resolve(decrypted);
+        request.onsuccess = () => {
+            const record = request.result;
+            if (record && record.data) {
+                resolve(decryptData(record.data));
             } else {
                 resolve(null);
             }
