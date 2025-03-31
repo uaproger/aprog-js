@@ -1,7 +1,7 @@
 import {storage} from "./storage.js";
 import {button, div} from "./aprog.js";
 
-export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, colors = {} } = {}) => {
+export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, colors = {}, customStyles = {} } = {}) => {
     const defaultColors = {
         defaultColor: "#043458",
         backgroundColor: "#ffffff",
@@ -9,21 +9,31 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
         borderRadius: "0.5rem",
         fontSize: "16px",
         borderWidth: "0.0313rem",
-        border: "border: ${theme.borderWidth} solid ${theme.defaultColor};"
+        border: "border: ${theme.borderWidth} solid ${theme.defaultColor}",
+
+        paginateBlock: {
+            width: "width: 100vw",
+            margin: "margin: 20px 0",
+            padding: "padding: 0 20px",
+            display: "display: flex",
+            alignItems: "align-items: center",
+            justifyContent: "justify-content: center",
+            gap: "gap: 5px"
+        }
     };
 
-    const theme = { ...defaultColors, ...colors };
+    const theme = { ...defaultColors, ...colors, ...customStyles };
 
     const styles = `
         <style>
             .paginate-block {
-                width: 100vw;
-                padding: 0 20px;
-                margin: 20px 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 5px;
+                ${theme.paginateBlock.width};
+                ${theme.paginateBlock.margin};
+                ${theme.paginateBlock.padding};
+                ${theme.paginateBlock.display};
+                ${theme.paginateBlock.alignItems};
+                ${theme.paginateBlock.justifyContent};
+                ${theme.paginateBlock.gap};
             }
             .paginate-btn,
             .paginate-dots,
@@ -34,7 +44,7 @@ export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, 
                 font-weight: 600;
                 color: ${theme.defaultColor};
                 background: ${theme.backgroundColor};
-                ${theme.border}
+                ${theme.border};
                 border-radius: ${theme.borderRadius};
                 cursor: pointer;
                 box-shadow: ${theme.boxShadow};
