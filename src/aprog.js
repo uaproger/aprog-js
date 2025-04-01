@@ -1347,3 +1347,13 @@ export const attachCustomTitle = (element, text) => {
         tooltip.style.display = "none";
     });
 };
+
+export const parseCustomMarkup = (text) => {
+    text = text.replace(/```([\s\S]*?)```/g, (match, p1) => {
+        return `<pre style="width: max-content; padding: 2px 8px; color: #333333; background-color: #fdfdfd; border: 0.03125rem solid #dddddd; border-radius: 4px;"><code style="font-family: Monospaced, serif; font-style: italic; font-weight: 100; letter-spacing: 2px;">${p1.trim()}</code></pre>`;
+    });
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 700;">$1</strong>');
+    text = text.replace(/`([^`]+?)`/g, '<code style="font-family: Monospaced, serif; font-style: italic; font-weight: 100; letter-spacing: 2px;">$1</code>');
+    text = text.replace(/^\* (.+)$/gm, '<li style="font-family: Times New Roman, serif; font-weight: 400;">$1</li>');
+    return `<div style="font-family: Times New Roman, serif; font-weight: 400;">${text}</div>`;
+}

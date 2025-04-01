@@ -1,4 +1,5 @@
 import {loadCacheDB, saveCacheDB} from "./indexDB.js";
+import {parseCustomMarkup} from "./aprog.js";
 
 const empty = (variable) => {
     if (typeof variable === 'object' && !Array.isArray(variable) && Object.keys(variable).length === 0) {
@@ -17,7 +18,7 @@ export const gemini = async (content) => {
 
     if (cache.messages[content]) {
         console.warn("Відповідь знайдена у кеші");
-        return cache.messages[content];
+        // return cache.messages[content];
     }
 
     const apiKey = import.meta.env.VITE_GEMINI_KEY;
@@ -39,7 +40,7 @@ export const gemini = async (content) => {
         return data.error.message;
     }
 
-    const answer = data.candidates?.[0]?.content?.parts?.[0]?.text || null;
+    const answer = parseCustomMarkup(data.candidates?.[0]?.content?.parts?.[0]?.text || null);
 
     if (answer) {
         cache.messages[content] = answer;
