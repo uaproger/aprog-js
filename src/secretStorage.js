@@ -1,11 +1,15 @@
-import AES from "crypto-js/aes";
-import Utf8 from "crypto-js/enc-utf8";
+import AES from 'crypto-js/aes.js';
+import Utf8 from 'crypto-js/enc-utf8.js';
 
 const DB_NAME = 'secureDB';
 const STORE_NAME = 'secureStore';
 const DB_VERSION = 1;
 
-const SECRET = import.meta.env.VITE_ENCRYPTION_KEY;
+let SECRET = "SecretK@y";
+
+export const setSecretKey = (key) => {
+    SECRET = key;
+};
 
 const encryptData = (data) => {
     const encrypted = AES.encrypt(JSON.stringify(data), SECRET);

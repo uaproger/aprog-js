@@ -1,6 +1,6 @@
 {
   "name": "aprog",
-  "version": "1.7.2",
+  "version": "1.7.6",
   "description": "Допоміжна бібліотека js",
   "main": "index.js",
   "scripts": {
@@ -23,5 +23,8 @@
   "devDependencies": {
     "jest": "^29.7.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
 }
