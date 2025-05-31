@@ -1,10 +1,17 @@
-export const redirect = (url, { newTab = false, replace = false } = {}) => {
+export const redirect = (url, {
+    newTab = false,
+    replace = false,
+    props = {}
+} = {}) => {
+    const query = new URLSearchParams(props).toString();
+    const finalUrl = query ? `${url}?${query}` : url;
+
     if (newTab) {
-        window.open(url, "_blank");
+        window.open(finalUrl, "_blank");
     } else if (replace) {
-        window.location.replace(url);
+        window.location.replace(finalUrl);
     } else {
-        window.location.href = url;
+        window.location.href = finalUrl;
     }
 };
 
