@@ -1,10 +1,13 @@
+import {GUID} from "./aprog.js";
+
 export const cookie = {
     /**
-     * Отримати значення cookie по імені
+     * Отримати значення cookie за ім'ям
      * @param {string} name
+     * @param defaulting
      * @returns {string|null}
      */
-    get(name) {
+    get(name, defaulting = null) {
         const cookies = document.cookie.split('; ');
         for (let cookie of cookies) {
             const index = cookie.indexOf('=');
@@ -17,7 +20,19 @@ export const cookie = {
                 return decodeURIComponent(value);
             }
         }
-        return null;
+        return defaulting;
+    },
+
+    /**
+     * Отримати всі cookie
+     * @return {{}}
+     */
+    getAll() {
+        return document.cookie.split('; ').reduce((acc, cookie) => {
+            const [key, ...val] = cookie.split('=');
+            acc[key] = decodeURIComponent(val.join('='));
+            return acc;
+        }, {});
     },
 
     /**
@@ -59,3 +74,23 @@ export const storage = {
         localStorage.removeItem(key);
     }
 };
+
+/**
+ * --- Ключ для кешу на бекенді ---
+ * @param {string} name - вводиться як абревіатура у верхньому регістрі
+ * @param {boolean} create
+ * @return {string}
+ */
+export const cacheKey = (name, create = true) => {
+    let key = cookie.get(`_key_${name}`);
+
+    if (!create) return key;
+
+    if (!key) {
+        key = GUID();
+        cookie.set(`_key_${name}`, key, 30);
+    } else {
+        console.warn("load_by_cache");
+    }
+    return key;
+}

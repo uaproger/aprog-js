@@ -24,3 +24,8 @@ export const validateEmail = (email) => {
 export const validatePassword = (password) => {
     return /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/.test(password);
 };
+
+export const delay = (handler, seconds, args = []) => {
+    seconds *= 10000;
+    setTimeout(handler, seconds, ...args)
+};
