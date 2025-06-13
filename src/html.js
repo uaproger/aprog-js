@@ -35,7 +35,43 @@ export function dataHTMLElementPrototype() {
     }
 }
 
+export function toKebabCaseStringPrototype() {
+    if (!String.prototype.toKebabCase) {
+        String.prototype.toKebabCase = function () {
+            return this
+                .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+                .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+                .toLowerCase();
+        };
+    }
+}
+
+export function toSnakeCaseStringPrototype() {
+    if (!String.prototype.toSnakeCase) {
+        String.prototype.toSnakeCase = function () {
+            return this
+                .replace(/([a-z0-9])([A-Z])/g, '$1_$2')
+                .replace(/([A-Z])([A-Z][a-z])/g, '$1_$2')
+                .toLowerCase();
+        };
+    }
+}
+
+export function repeatHTMLElementPrototype() {
+    if (!HTMLElement.prototype.repeat) {
+        HTMLElement.prototype.repeat = function (newElement) {
+            if (!(newElement instanceof HTMLElement)) {
+                throw new Error('Argument must be an HTMLElement');
+            }
+            this.replaceWith(newElement);
+        };
+    }
+}
+
 pushHTMLElementPrototype();
 pushAfterHTMLElementPrototype();
 pushBeforeHTMLElementPrototype();
 dataHTMLElementPrototype();
+toKebabCaseStringPrototype();
+toSnakeCaseStringPrototype();
+repeatHTMLElementPrototype();

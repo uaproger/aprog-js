@@ -14,4 +14,9 @@ export { mathInput, autoPPI } from './src/math.js';
 export { cookie, storage, cacheKey } from './src/storage.js';
 export { paginate, parseData } from './src/paginate.js';
 export { saveItem, loadItem, setSecretKey } from './src/secretStorage.js';
-export { pushHTMLElementPrototype, pushAfterHTMLElementPrototype, pushBeforeHTMLElementPrototype, dataHTMLElementPrototype } from './src/html.js';
+export {
+    pushHTMLElementPrototype, pushAfterHTMLElementPrototype,
+    pushBeforeHTMLElementPrototype, dataHTMLElementPrototype,
+    toKebabCaseStringPrototype, toSnakeCaseStringPrototype,
+    repeatHTMLElementPrototype
+} from './src/html.js';
