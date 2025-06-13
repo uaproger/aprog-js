@@ -230,6 +230,7 @@ export const input = (attributes = {}) => {
                         input.type = String(attrValue);
                         break;
                     case "class":
+                    case "className":
                         input.className = String(attrValue);
                         break;
                     case "style":
@@ -246,6 +247,10 @@ export const input = (attributes = {}) => {
                         break;
                     case "disabled":
                         input.disabled = attrValue;
+                        break;
+                    case "autofocus":
+                    case "focus":
+                        input.focus();
                         break;
                     default:
                         if (name.startsWith("data")) {
@@ -275,6 +280,7 @@ export const label = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         label.className = String(attrValue);
                         break;
                     case "value":
@@ -325,6 +331,7 @@ export const form = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         form.className = String(attrValue);
                         break;
                     case "action":
@@ -384,6 +391,7 @@ export const div = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         div.className = String(attrValue);
                         break;
                     case "value":
@@ -434,6 +442,7 @@ export const a = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         a.className = String(attrValue);
                         break;
                     case "value":
@@ -484,6 +493,7 @@ export const span = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         span.className = String(attrValue);
                         break;
                     case "value":
@@ -534,6 +544,7 @@ export const textarea = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         textarea.className = String(attrValue);
                         break;
                     case "value":
@@ -584,6 +595,7 @@ export const pre = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         pre.className = String(attrValue);
                         break;
                     case "value":
@@ -634,6 +646,7 @@ export const button = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         button.className = String(attrValue);
                         break;
                     case "type":
@@ -685,6 +698,7 @@ export const select = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         select.className = String(attrValue);
                         break;
                     case "style":
@@ -777,7 +791,10 @@ export const hr = (attributes = {}) => {
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
             switch (name) {
-                case "class": hr.className = String(attrValue); break;
+                case "class":
+                case "className":
+                    hr.className = String(attrValue);
+                    break;
                 case "style": Object.entries(attrValue).forEach(([styleName, styleValue]) => {
                     switch (styleName) {
                         case "zIndex": hr.style[styleName] = `99999${styleValue}`; break;
@@ -796,7 +813,10 @@ export const meta = (attributes = {}) => {
     if (attributes) {
         Object.entries(attributes).forEach(([name, attrValue]) => {
             switch (name) {
-                case "class": meta.className = String(attrValue); break;
+                case "class":
+                case "className":
+                    meta.className = String(attrValue);
+                    break;
                 case "style": Object.entries(attrValue).forEach(([styleName, styleValue]) => {
                     switch (styleName) {
                         case "zIndex": meta.style[styleName] = `99999${styleValue}`; break;
@@ -820,6 +840,7 @@ export const table = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         table.className = String(attrValue);
                         break;
                     case "value":
@@ -873,6 +894,7 @@ export const caption = (attributes = {}) => {
                         caption.style.captionSide = String(attrValue);
                         break;
                     case "class":
+                    case "className":
                         caption.className = String(attrValue);
                         break;
                     case "value":
@@ -923,6 +945,7 @@ export const thead = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         thead.className = String(attrValue);
                         break;
                     case "value":
@@ -973,6 +996,7 @@ export const tbody = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         tbody.className = String(attrValue);
                         break;
                     case "value":
@@ -1023,6 +1047,7 @@ export const tr = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         tr.className = String(attrValue);
                         break;
                     case "value":
@@ -1073,6 +1098,7 @@ export const th = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         th.className = String(attrValue);
                         break;
                     case "value":
@@ -1123,6 +1149,7 @@ export const td = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         td.className = String(attrValue);
                         break;
                     case "value":
@@ -1174,6 +1201,7 @@ export const img = (attributes = {}) => {
             } else {
                 switch (name) {
                     case "class":
+                    case "className":
                         img.className = String(attrValue);
                         break;
                     case "src":
