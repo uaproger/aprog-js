@@ -18,6 +18,7 @@
 }
 pre.token.block {
     min-width: 100%;
+    min-height: 100%;
     width: max-content;
     padding: 1rem;
     color: var(--prism-property);

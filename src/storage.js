@@ -94,3 +94,47 @@ export const cacheKey = (name, create = true) => {
     }
     return key;
 }
+
+/**
+ * --- Функція завантаження файлів ---
+ * @param content
+ * @param filename
+ */
+export const downloadFile = (content, filename = "file.txt") => {
+    /** Мапа: розширення -> MIME-тип */
+    const extensionToMime = {
+        "txt": "text/plain",
+        "json": "application/json",
+        "xml": "text/xml",
+        "html": "text/html",
+        "js": "application/javascript",
+        "css": "text/css",
+        "pdf": "application/pdf",
+        "zip": "application/zip",
+        "xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "project": "application/x-project"
+    };
+
+    /** Отримуємо розширення файлу */
+    const extension = filename.split('.').pop().toLowerCase();
+
+    /** Визначаємо MIME-тип */
+    const mimeType = extensionToMime[extension] || "application/octet-stream"; // дефолт
+
+    /** Створюємо Blob */
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+
+    /** Створюємо тимчасове посилання для завантаження */
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+
+    /** Видаляємо посилання та звільняємо пам'ять */
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    console.log(`✅ Файл "${filename}" (${mimeType}) завантажено.`);
+}
