@@ -11,11 +11,11 @@ export const prism = (text) => {
                 color: #A782BB;
                 background-color: #212121;
             }
-            .token.punctuation, .token.operator { color: #d0d0d0); }
+            .token.punctuation, .token.operator { color: #d0d0d0; }
             .token.property { color: #A782BB; }
             .token.string { color: #8EA765; }
             .token.number { color: #118899; }
-            .token.boolean, .token.null { color: #CC7832); }
+            .token.boolean, .token.null { color: #CC7832; }
             .token.editor  {
                 font-weight: 700;
                 color: #1199dd;
