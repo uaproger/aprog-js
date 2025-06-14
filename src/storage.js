@@ -1,4 +1,4 @@
-import {GUID} from "./aprog.js";
+import {GUID} from "./general.js";
 
 export const cookie = {
     /**

@@ -1,5 +1,5 @@
 import {cookie, storage} from "./storage.js";
-import {button, div, GUID} from "./aprog.js";
+import {button, div, GUID} from "./general.js";
 
 export const paginate = ({ count = 0, currentPage = 1, onPageChange = () => {}, colors = {}, customStyles = {} } = {}) => {
     const defaultColors = {

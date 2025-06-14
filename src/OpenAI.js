@@ -1,5 +1,5 @@
 import {loadCacheDB, saveCacheDB} from "./indexDB.js";
-import {parseCustomMarkup} from "./aprog.js";
+import {parseCustomMarkup} from "./general.js";
 
 const empty = (variable) => {
     if (typeof variable === 'object' && !Array.isArray(variable) && Object.keys(variable).length === 0) {

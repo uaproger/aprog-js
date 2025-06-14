@@ -1,9 +1,33 @@
-import {span} from "./aprog.js";
-import "./css/prism.css";
+import {pre, span} from "./general.js";
 
 export const prism = (text) => {
-    const container = document.createElement("pre");
-    container.className = "token block";
+    const style = `
+        <style>
+            pre.token.block {
+                min-width: 100%;
+                min-height: 100%;
+                width: max-content;
+                padding: 1rem;
+                color: #A782BB;
+                background-color: #212121;
+            }
+            .token.punctuation, .token.operator { color: #d0d0d0); }
+            .token.property { color: #A782BB; }
+            .token.string { color: #8EA765; }
+            .token.number { color: #118899; }
+            .token.boolean, .token.null { color: #CC7832); }
+            .token.editor  {
+                font-weight: 700;
+                color: #1199dd;
+                text-shadow: 0 0 6px rgba(255, 255, 255, 1);
+            }
+        </style>
+    `;
+
+    const container = pre({
+        class: "token block",
+        value: style
+    })
     const stack = [];
     let counter = 1;
 

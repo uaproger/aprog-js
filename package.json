@@ -1,6 +1,6 @@
 {
   "name": "aprog",
-  "version": "1.9.5",
+  "version": "2.0.3",
   "description": "Допоміжна бібліотека js",
   "main": "index.js",
   "scripts": {
@@ -26,11 +26,5 @@
   "type": "module",
   "dependencies": {
     "crypto-js": "^4.2.0"
-  },
-  "exports": {
-    ".": {
-      "import": "./index.js"
-    },
-    "./prism.css": "./src/css/prism.css"
   }
 }

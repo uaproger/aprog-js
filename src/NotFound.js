@@ -1,4 +1,4 @@
-import {div} from "./aprog.js";
+import {div} from "./general.js";
 
 const NotFound = ({ message = "Page Not Found" }) => {
     return div({

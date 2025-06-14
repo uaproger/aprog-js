@@ -1,11 +1,10 @@
-import './src/css/prism.css';
 export {
     div, span, button, a, img, meta, label, input, select, option, options, form, hr, textarea,
     table, caption, thead, tbody, tr, th, td, pre,
     attachCustomTitle, _get, _getAll, GUID, isEmpty, apState, date, pause, apFetch, parseCustomMarkup,
     chars, isNull, isFloat, isNumeric, isObject, elementToObject, copyText, scrollToTop, scrollToBottom,
     firstKey, isArray, checkArrays, isNumber, isString, isPromise, ucfirst, deepEqual, nodeListToObject
-} from './src/aprog.js';
+} from './src/general.js';
 export { dump, dd } from './src/debugger.js';
 export { redirect, reload, validateEmail, validatePassword, delay } from './src/redirect.js';
 export { router, navigateTo, navi } from './src/router.js';
