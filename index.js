@@ -20,3 +20,4 @@ export {
     toKebabCaseStringPrototype, toSnakeCaseStringPrototype,
     repeatHTMLElementPrototype
 } from './src/html.js';
+export { prism } from "./src/prism.js";
