@@ -25,7 +25,26 @@ export const validatePassword = (password) => {
     return /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$/.test(password);
 };
 
+/**
+ * --- Функція для відкладеного запуску скрипта ---
+ * ідентична `setTimeout`, але використовує секунди
+ * @param handler
+ * @param seconds
+ * @param args
+ */
 export const delay = (handler, seconds, args = []) => {
-    seconds *= 10000;
-    setTimeout(handler, seconds, ...args)
+    seconds *= 1000;
+    setTimeout(handler, seconds, ...args);
+};
+
+/**
+ * --- Функція для циклічності скрипта ---
+ * ідентична `setInterval`, але використовує секунди
+ * @param handler
+ * @param seconds
+ * @param args
+ */
+export const cycle = (handler, seconds, args = []) => {
+    seconds *= 1000;
+    setInterval(handler, seconds, ...args)
 };

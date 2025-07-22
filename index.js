@@ -6,7 +6,7 @@ export {
     firstKey, isArray, checkArrays, isNumber, isString, isPromise, ucfirst, deepEqual, nodeListToObject
 } from './src/general.js';
 export { dump, dd } from './src/debugger.js';
-export { redirect, reload, validateEmail, validatePassword, delay } from './src/redirect.js';
+export { redirect, reload, validateEmail, validatePassword, delay, cycle } from './src/redirect.js';
 export { router, navigateTo, navi } from './src/router.js';
 export { encrypt, decrypt } from './src/shifrator.js';
 export { gemini } from './src/OpenAI.js';
