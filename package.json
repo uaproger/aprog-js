@@ -1,18 +1,27 @@
 {
   "name": "aprog",
-  "version": "2.0.4",
-  "description": "Допоміжна бібліотека js",
+  "version": "2.0.5",
+  "description": "Допоміжна JavaScript-бібліотека для проєктів",
   "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./index.js"
+    }
+  },
   "scripts": {
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uaproger/aprog-js.git"
+    "url": "https://github.com/uaproger/aprog-js.git"
   },
   "keywords": [
     "aprog",
-    "bibliotec"
+    "js",
+    "library",
+    "tools",
+    "utilities"
   ],
   "author": "AlexProger",
   "license": "MIT",
@@ -20,10 +29,15 @@
     "url": "https://github.com/uaproger/aprog-js/issues"
   },
   "homepage": "https://github.com/uaproger/aprog-js#readme",
+  "type": "module",
+  "files": [
+    "index.js",
+    "bin/",
+    "src/"
+  ],
   "devDependencies": {
     "jest": "^29.7.0"
   },
-  "type": "module",
   "dependencies": {
     "crypto-js": "^4.2.0"
   }

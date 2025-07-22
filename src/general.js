@@ -286,10 +286,15 @@ export const label = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? label.appendChild(element) : label.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? label.appendChild(element) : label.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? label.appendChild(attrValue) : label.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                label.appendChild(attrValue);
+                            } else {
+                                label.innerHTML = String(attrValue);
+                                label.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -346,10 +351,15 @@ export const form = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? form.append(element) : form.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? form.append(element) : form.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? form.append(attrValue) : form.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                form.appendChild(attrValue);
+                            } else {
+                                form.innerHTML = String(attrValue);
+                                form.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -397,10 +407,15 @@ export const div = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? div.append(element) : div.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? div.append(element) : div.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? div.append(attrValue) : div.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                div.appendChild(attrValue);
+                            } else {
+                                div.innerHTML = String(attrValue);
+                                div.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -448,10 +463,15 @@ export const a = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? a.append(element) : a.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? a.append(element) : a.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? a.append(attrValue) : a.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                a.appendChild(attrValue);
+                            } else {
+                                a.innerHTML = String(attrValue);
+                                a.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -499,10 +519,15 @@ export const span = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? span.append(element) : span.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? span.append(element) : span.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? span.append(attrValue) : span.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                span.appendChild(attrValue);
+                            } else {
+                                span.innerHTML = String(attrValue);
+                                span.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -550,10 +575,15 @@ export const textarea = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? textarea.appendChild(element) : textarea.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? textarea.appendChild(element) : textarea.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? textarea.appendChild(attrValue) : textarea.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                textarea.appendChild(attrValue);
+                            } else {
+                                textarea.innerHTML = String(attrValue);
+                                textarea.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -601,10 +631,15 @@ export const pre = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? pre.appendChild(element) : pre.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? pre.appendChild(element) : pre.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? pre.appendChild(attrValue) : pre.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                pre.appendChild(attrValue);
+                            } else {
+                                pre.innerHTML = String(attrValue);
+                                pre.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -654,6 +689,7 @@ export const button = (attributes = {}) => {
                         break;
                     case "value":
                         button.innerHTML = String(attrValue);
+                        button.title = String(attrValue);
                         break;
                     case "disabled":
                         button.disabled = attrValue;
@@ -846,10 +882,15 @@ export const table = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? table.append(element) : table.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? table.append(element) : table.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? table.append(attrValue) : table.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                table.appendChild(attrValue);
+                            } else {
+                                table.innerHTML = String(attrValue);
+                                table.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -900,10 +941,15 @@ export const caption = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? caption.append(element) : caption.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? caption.append(element) : caption.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? caption.append(attrValue) : caption.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                caption.appendChild(attrValue);
+                            } else {
+                                caption.innerHTML = String(attrValue);
+                                caption.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -951,10 +997,15 @@ export const thead = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? thead.append(element) : thead.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? thead.append(element) : thead.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? thead.append(attrValue) : thead.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                thead.appendChild(attrValue);
+                            } else {
+                                thead.innerHTML = String(attrValue);
+                                thead.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -1002,10 +1053,15 @@ export const tbody = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? tbody.append(element) : tbody.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? tbody.append(element) : tbody.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? tbody.append(attrValue) : tbody.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                tbody.appendChild(attrValue);
+                            } else {
+                                tbody.innerHTML = String(attrValue);
+                                tbody.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -1053,10 +1109,15 @@ export const tr = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? tr.append(element) : tr.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? tr.append(element) : tr.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? tr.append(attrValue) : tr.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                tr.appendChild(attrValue);
+                            } else {
+                                tr.innerHTML = String(attrValue);
+                                tr.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -1104,10 +1165,15 @@ export const th = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? th.append(element) : th.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? th.append(element) : th.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? th.append(attrValue) : th.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                th.appendChild(attrValue);
+                            } else {
+                                th.innerHTML = String(attrValue);
+                                th.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":
@@ -1155,10 +1221,15 @@ export const td = (attributes = {}) => {
                     case "value":
                         if (isArray(attrValue)) {
                             attrValue.forEach((element) => {
-                                isHtmlElement(element) ? td.append(element) : td.innerHTML = String(element)
-                            })
+                                isHtmlElement(element) ? td.append(element) : td.innerHTML = String(element);
+                            });
                         } else {
-                            isHtmlElement(attrValue) ? td.append(attrValue) : td.innerHTML = String(attrValue)
+                            if (isHtmlElement(attrValue)) {
+                                td.appendChild(attrValue);
+                            } else {
+                                td.innerHTML = String(attrValue);
+                                td.title = String(attrValue);
+                            }
                         }
                         break;
                     case "style":

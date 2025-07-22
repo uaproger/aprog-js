@@ -21,7 +21,14 @@ class Debugger {
         console.group('%c🛠️ Debug Dump Output', 'font-weight: bold; color: #043458; font-size: 12px; background-color: #b3c2cc; padding: 4px 16px; border-radius: 4px;');
         this.#consoleDump(args);
         console.groupEnd();
-        debugger;
+        if (typeof window !== 'undefined' && window.__DEV__) {
+            debugger;
+            setTimeout(() => {
+                debugger;
+            }, 0);
+        } else {
+            throw new Error("dd() breakpoint");
+        }
     }
 }
 
