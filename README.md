@@ -139,6 +139,16 @@ onInput: (event) => {
 <input value="4">
 ```
 
+Завантаження `Constructs`
+```shell
+node node_modules/aprog/publish.js
+```
+
+Завантаження `Constructs` з перезаписом
+```shell
+node node_modules/aprog/publish.js --force
+```
+
 ########## ########## ########## ########## ##########
 
 Загальний список методів:
