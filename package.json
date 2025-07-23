@@ -1,6 +1,6 @@
 {
   "name": "aprog",
-  "version": "2.0.7",
+  "version": "2.1.1",
   "description": "Допоміжна JavaScript-бібліотека для проєктів",
   "main": "index.js",
   "exports": {
@@ -36,7 +36,8 @@
   "files": [
     "index.js",
     "bin/",
-    "src/"
+    "src/",
+    "publish.js"
   ],
   "devDependencies": {
     "jest": "^29.7.0"

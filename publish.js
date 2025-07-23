@@ -13,9 +13,11 @@ function copyFile(from, to) {
 
     if (!fs.existsSync(to) || force) {
         fs.copyFileSync(from, to);
-        console.log(`✅ Копійовано: ${from} → ${to}`);
+        console.log(`✅  Копійовано: ${to}`);
+        console.log("");
     } else {
         console.log(`ℹ️ Пропущено (вже існує): ${to}`);
+        console.log("");
     }
 }
 
@@ -44,5 +46,6 @@ function copyConstructs() {
 }
 
 console.log('📦 Починаю копіювання файлів з Aprog...');
+console.log("");
 copyConstructs();
 console.log('🏁 Готово.');
