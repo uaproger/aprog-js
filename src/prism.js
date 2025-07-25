@@ -26,7 +26,8 @@ export const prism = (text) => {
 
     const container = pre({
         class: "token block",
-        value: style
+        value: style,
+        title: ""
     })
     const stack = [];
     let counter = 1;
@@ -58,7 +59,8 @@ export const prism = (text) => {
             if (isEmpty) {
                 container.appendChild(span({
                     class: "token punctuation",
-                    value: token
+                    value: token,
+                    title: ""
                 }));
                 continue;
             }
@@ -68,6 +70,7 @@ export const prism = (text) => {
                 style: isEmpty ? {} : { cursor: "pointer" },
                 dataStart: "m",
                 value: isEmpty ? token : `<span class="token editor">-</span> ${token}`,
+                title: "",
                 onClick: isEmpty ? null : (event) => {
                     const el = event.target.closest(`.start-${index}`);
                     const tokenType = token;
