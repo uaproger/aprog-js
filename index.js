@@ -11,7 +11,7 @@ export { router, navigateTo, navi } from './src/router.js';
 export { encrypt, decrypt } from './src/shifrator.js';
 export { gemini } from './src/OpenAI.js';
 export { mathInput, autoPPI } from './src/math.js';
-export { cookie, storage, cacheKey, downloadFile } from './src/storage.js';
+export { cookie, storage, session, cacheKey, downloadFile } from './src/storage.js';
 export { paginate, parseData, __paginate, __counter } from './src/paginate.js';
 export { saveItem, loadItem, setSecretKey } from './src/secretStorage.js';
 export {
@@ -21,3 +21,4 @@ export {
     repeatHTMLElementPrototype
 } from './src/html.js';
 export { prism } from "./src/prism.js";
+export { uniquePage } from "./src/pages.js";

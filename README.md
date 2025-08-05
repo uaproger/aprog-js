@@ -173,6 +173,8 @@ node node_modules/aprog/publish.js --force
 
 - *saveItem("id", data), loadItem("id")*
 
+- *uniquePage({key: "default", callbackTrue: () => {"empty"}, callbackFalse: () => {"empty"}, timer: "default")*
+
 ### Info
 
 - Додано безплатний чат із `Gemini`

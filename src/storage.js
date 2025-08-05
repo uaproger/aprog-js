@@ -1,10 +1,10 @@
-import {GUID} from "./general.js";
+import {GUID, isEmpty} from "./general.js";
 
 export const cookie = {
     /**
-     * Отримати значення cookie за ім'ям
+     * --- Отримати значення cookie за ім'ям ---
      * @param {string} name
-     * @param defaulting
+     * @param {any|null} defaulting
      * @returns {string|null}
      */
     get(name, defaulting = null) {
@@ -24,7 +24,7 @@ export const cookie = {
     },
 
     /**
-     * Отримати всі cookie
+     * --- Отримати всі cookie ---
      * @return {{}}
      */
     getAll() {
@@ -36,7 +36,7 @@ export const cookie = {
     },
 
     /**
-     * Встановити cookie
+     * --- Встановити cookie ---
      * @param {string} name
      * @param {string} value
      * @param {number} days
@@ -61,17 +61,97 @@ export const cookie = {
     }
 };
 
+/**
+ * --- Локальне сховище ---
+ */
 export const storage = {
+    /**
+     * --- Отримати елемент зі сховища ---
+     * @param {string} key
+     * @param {any|null} defaulting
+     * @return {any|null}
+     */
     get(key, defaulting = null) {
-        return JSON.parse(localStorage.getItem(key)) || defaulting;
+        try {
+            const item = localStorage.getItem(key);
+            return item ? JSON.parse(item) : defaulting;
+        } catch (e) {
+            console.warn(`storage.get: invalid JSON for key "${key}"`, e);
+            return defaulting;
+        }
     },
 
+    /**
+     * --- Додати елемент у сховище ---
+     * @param {string} key
+     * @param {any} data
+     */
     set(key, data) {
         localStorage.setItem(key, JSON.stringify(data));
     },
 
+    /**
+     * --- Перевірка на існування елемента у сховищі ---
+     * @param {string} key
+     * @return {boolean}
+     */
+    check(key) {
+        return !isEmpty(localStorage.getItem(key));
+    },
+
+    /**
+     * --- Видалити елемент зі сховища ---
+     * @param {string} key
+     */
     delete(key) {
         localStorage.removeItem(key);
+    }
+};
+
+/**
+ * --- Сховище сесії ---
+ */
+export const session = {
+    /**
+     * --- Отримати елемент з сесії ---
+     * @param {string} key
+     * @param {any|null} defaulting
+     * @return {any|null}
+     */
+    get(key, defaulting = null) {
+        try {
+            const item = sessionStorage.getItem(key);
+            return item ? JSON.parse(item) : defaulting;
+        } catch (e) {
+            console.warn(`session.get: invalid JSON for key "${key}"`, e);
+            return defaulting;
+        }
+    },
+
+    /**
+     * --- Додати елемент до сесії ---
+     * @param {string} key
+     * @param {any} data
+     */
+    set(key, data) {
+        sessionStorage.setItem(key, JSON.stringify(data));
+    },
+
+    /**
+     * --- Перевірка на існування елемента у сесії ---
+     * @param {string} key
+     * @return {boolean}
+     */
+    check(key) {
+        return !isEmpty(sessionStorage.getItem(key));
+    },
+
+    /**
+     * --- Видалити елемент з сесії ---
+     * @param {string} key
+     */
+    delete(key) {
+        sessionStorage.removeItem(key);
     }
 };
 
@@ -90,10 +170,10 @@ export const cacheKey = (name, create = true) => {
         key = GUID();
         cookie.set(`_key_${name}`, key, 30);
     } else {
-        console.warn("load_by_cache");
+        console.warn("load by cache");
     }
     return key;
-}
+};
 
 /**
  * --- Функція завантаження файлів ---
@@ -137,4 +217,4 @@ export const downloadFile = (content, filename = "file.txt") => {
     URL.revokeObjectURL(url);
 
     console.log(`✅ Файл "${filename}" (${mimeType}) завантажено.`);
-}
+};
