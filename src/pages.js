@@ -5,8 +5,14 @@ export const uniquePage = ({
     key = "guid",
     callbackTrue = () => {},
     callbackFalse = () => {},
-    timer = 60000 // таймер 1 хвилина
+    timer = 60000, // таймер 1 хвилина
+    current = false
 }) => {
+    if (current) {
+        if (session.check(key)) session.delete(key);
+        if (storage.check(key)) storage.delete(key);
+    }
+
     const setSession = () => {
         // Якщо немає ні сесії, ні лс, то додаємо
         if (!session.check(key) && !storage.check(key)) {
