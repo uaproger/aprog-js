@@ -22,3 +22,5 @@ export {
 } from './src/html.js';
 export { prism } from "./src/prism.js";
 export { uniquePage } from "./src/pages.js";
+export { default as AprogClass } from './src/classes/AprogClass.js';
+export { default as SmartWrapper } from './src/classes/SmartWrapper.js';

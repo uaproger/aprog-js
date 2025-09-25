@@ -68,6 +68,18 @@ export function repeatHTMLElementPrototype() {
     }
 }
 
+export function replaceChildrenHTMLElementPrototype() {
+    if (!HTMLElement.prototype.replaceChildren) {
+        HTMLElement.prototype.replaceChildren = function (newElement) {
+            if (!(newElement instanceof HTMLElement)) {
+                throw new Error('Argument must be an HTMLElement');
+            }
+            this.innerHTML = null;
+            this.appendChild(HTMLElement);
+        };
+    }
+}
+
 pushHTMLElementPrototype();
 pushAfterHTMLElementPrototype();
 pushBeforeHTMLElementPrototype();
@@ -75,3 +87,4 @@ dataHTMLElementPrototype();
 toKebabCaseStringPrototype();
 toSnakeCaseStringPrototype();
 repeatHTMLElementPrototype();
+replaceChildrenHTMLElementPrototype();
