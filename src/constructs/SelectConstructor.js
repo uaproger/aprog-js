@@ -1,11 +1,11 @@
-import {button, GUID} from "aprog";
+import {GUID, select} from "aprog";
 
 /**
  * AprogJS Constructor
- * --- ButtonSearchConstructor ---
+ * --- SelectConstructor ---
  * Copyright (c) 2025 AlexProger.
  */
-export const ButtonConstructor = {
+export const SelectConstructor = {
     /**
      * create HTMLElement
      */
@@ -22,17 +22,17 @@ export const ButtonConstructor = {
         id = undefined,
         className = "",
         style = {},
-        type = undefined,
-        text = "",
+        option = undefined,
+        options = undefined,
         callback = () => {},
     } = {}) {
-        return this.is = button({
+        return this.is = select({
             id: id || GUID(),
-            class: `${this.class} btn ${className} disabled`.trim(),
+            class: `${this.class} input ${className}`.trim(),
             style: style,
-            ...(type && {type: type}),
-            value: text,
-            onClick: callback
+            ...(option && {option: option}),
+            ...(options && {options: options}),
+            onChange: callback,
         });
     },
 

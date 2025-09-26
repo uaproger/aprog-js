@@ -31,7 +31,7 @@ export const InputConstructor = {
     } = {}) {
         return this.is = input({
             id: id || GUID(),
-            class: `${this.class} input ${className}`,
+            class: `${this.class} input ${className}`.trim(),
             style: style,
             ...(type && {type: type}),
             focus: focus,
