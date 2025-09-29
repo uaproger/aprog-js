@@ -4,55 +4,53 @@ class StateWrapper {
     constructor(initialValue) {
         this.#value = initialValue;
 
-        return new Proxy(this, {
-            get: (target, prop) => {
+        const handler = {
+            get: (target, prop, receiver) => {
+                if (prop === 'val') return target.#value;
+
                 if (prop === 'set') {
                     return (newValue) => {
-                        target.#value = typeof newValue === 'function'
-                            ? newValue(target.#value)
-                            : newValue;
+                        target.#value = typeof newValue === 'function' ? newValue(target.#value) : newValue;
                     };
                 }
 
-                if (prop === 'value') {
-                    return target.#value;
+                if (prop === 'merge') {
+                    return (patch) => {
+                        if (typeof target.#value === 'object' && target.#value !== null) {
+                            target.#value = { ...target.#value, ...patch };
+                        }
+                    };
                 }
 
-                if (typeof target.#value === 'object' && target.#value !== null && prop in target.#value) {
+                if (prop === 'toJSON') return () => target.#value;
+                if (prop === 'toString') return () => String(target.#value);
+                if (prop === 'valueOf') return () => target.#value;
+
+                if (
+                    typeof target.#value === 'object' &&
+                    target.#value !== null &&
+                    prop in target.#value
+                ) {
                     return target.#value[prop];
                 }
 
-                return Reflect.get(target, prop);
+                return Reflect.get(target, prop, receiver);
             },
 
-            set: (target, prop, val) => {
+            set: (target, prop, newVal) => {
                 if (typeof target.#value === 'object' && target.#value !== null) {
-                    target.#value[prop] = val;
+                    target.#value[prop] = newVal;
                     return true;
                 }
                 return false;
             },
+        };
 
-            apply: (_, __, ___) => {
-                return target.#value;
-            },
+        return new Proxy(this, handler);
+    }
 
-            getPrototypeOf: (target) => {
-                return Object.getPrototypeOf(target.#value);
-            },
-
-            has: (target, key) => {
-                return key in target.#value;
-            },
-
-            ownKeys: (target) => {
-                return Reflect.ownKeys(target.#value);
-            },
-
-            getOwnPropertyDescriptor: (target, key) => {
-                return Object.getOwnPropertyDescriptor(target.#value, key);
-            }
-        });
+    valueOf() {
+        return this.#value;
     }
 }
 
