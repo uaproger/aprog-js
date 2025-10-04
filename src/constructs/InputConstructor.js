@@ -28,17 +28,21 @@ export const InputConstructor = {
         value = undefined,
         nameCallback = "onInput",
         callback = () => {},
+        ...props
     } = {}) {
-        return this.is = input({
+        this.is = input({
             id: id || GUID(),
             class: `${this.class} input ${className}`.trim(),
             style: style,
             ...(type && {type: type}),
-            focus: focus,
             ...(placeholder && {placeholder: placeholder}),
             ...(value && {value: value}),
             [nameCallback]: callback,
+            ...props
         });
+
+        if (focus) queueMicrotask(() => this.is.focus());
+        return this.is;
     },
 
     /**

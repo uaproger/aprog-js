@@ -7,6 +7,15 @@ export function pushHTMLElementPrototype() {
     }
 }
 
+export function prepushHTMLElementPrototype() {
+    if (!HTMLElement.prototype.prepush) {
+        HTMLElement.prototype.prepush = function(element) {
+            this.innerHTML = null;
+            this.prepend(element);
+        };
+    }
+}
+
 export function pushAfterHTMLElementPrototype() {
     if (!HTMLElement.prototype.pushAfter) {
         HTMLElement.prototype.pushAfter = function (element, existingChild) {

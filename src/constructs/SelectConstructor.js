@@ -25,6 +25,7 @@ export const SelectConstructor = {
         option = undefined,
         options = undefined,
         callback = () => {},
+        ...props
     } = {}) {
         return this.is = select({
             id: id || GUID(),
@@ -33,6 +34,7 @@ export const SelectConstructor = {
             ...(option && {option: option}),
             ...(options && {options: options}),
             onChange: callback,
+            ...props
         });
     },
 

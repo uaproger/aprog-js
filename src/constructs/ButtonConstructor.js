@@ -25,6 +25,7 @@ export const ButtonConstructor = {
         type = undefined,
         text = "",
         callback = () => {},
+        ...props
     } = {}) {
         return this.is = button({
             id: id || GUID(),
@@ -32,7 +33,8 @@ export const ButtonConstructor = {
             style: style,
             ...(type && {type: type}),
             value: text,
-            onClick: callback
+            onClick: callback,
+            ...props
         });
     },
 
