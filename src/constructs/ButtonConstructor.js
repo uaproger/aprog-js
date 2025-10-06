@@ -6,42 +6,43 @@ import {button, GUID} from "aprog";
  * Copyright (c) 2025 AlexProger.
  */
 export const ButtonConstructor = {
-    /**
-     * create HTMLElement
-     */
-    constructor() {
-        const instance = Object.create(this);
-        instance.class = GUID();
-        return instance;
-    },
+  /**
+   * create HTMLElement
+   */
+  constructor() {
+    const instance = Object.create(this);
+    instance.class = GUID();
+    return instance;
+  },
 
-    /**
-     * set HTMLElement
-     */
-    element({
-        id = undefined,
-        className = "",
-        style = {},
-        type = undefined,
-        text = "",
-        callback = () => {},
-        ...props
-    } = {}) {
-        return this.is = button({
-            id: id || GUID(),
-            class: `${this.class} btn ${className} disabled`.trim(),
-            style: style,
-            ...(type && {type: type}),
-            value: text,
-            onClick: callback,
-            ...props
-        });
+  /**
+   * set HTMLElement
+   */
+  element({
+    id = undefined,
+    className = "",
+    style = {},
+    type = undefined,
+    text = "",
+    callback = () => {
     },
+    ...props
+  } = {}) {
+    return this.is = button({
+      id: id || GUID(),
+      class: `${this.class} btn ${className} disabled`.trim(),
+      style: style,
+      ...(type && {type: type}),
+      value: text,
+      onClick: callback,
+      ...props
+    });
+  },
 
-    /**
-     * get target [HTMLElement]
-     */
-    get target() {
-        return this?.is;
-    }
+  /**
+   * get target [HTMLElement]
+   */
+  get target() {
+    return this?.is;
+  }
 };
