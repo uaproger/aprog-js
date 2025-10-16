@@ -14,7 +14,7 @@ export const abort = (message = "") => {
   throw new AbortError(`=> ${message}`);
 };
 
-export const useTableDrag = (selectorOrElement, onReorder = null) => {
+export const useTableDrag = (selectorOrElement, onReorder = null, time = 1000) => {
   const css = `
     tr.dragging td {
       opacity: 0.6;
@@ -24,6 +24,10 @@ export const useTableDrag = (selectorOrElement, onReorder = null) => {
     tr.sorted td {
       color: #043458 !important;
       background-color: rgba(4,52,88,.2) !important;
+    }
+    tr.good td {
+      color: #28a745 !important;
+      background-color: rgba(40,167,69,.2) !important;
     }
   `;
 
@@ -85,6 +89,11 @@ export const useTableDrag = (selectorOrElement, onReorder = null) => {
     const newOrder = getOrder();
     if (typeof onReorder === "function") {
       onReorder(newOrder);
+      if (draggedRow) setTimeout(() => {
+        draggedRow.classList.remove("sorted");
+        draggedRow.classList.add("good");
+        setTimeout(() => draggedRow.classList.remove("good"), time / 3);
+      }, time);
     }
   });
 
