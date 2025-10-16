@@ -20,11 +20,32 @@ class SmartWrapper {
       }
 
       if (Object.prototype.hasOwnProperty.call(this._value, key)) {
-        return new SmartWrapper(this._value[key]);
+        const val = this._value[key];
+        return new SmartWrapper(val !== null && val !== undefined ? val : def);
       }
     }
 
     return new SmartWrapper(def);
+  }
+
+  /**
+   * Отримати значення по ключу з value
+   * @param {string|number} key
+   * @param {*} def
+   * @returns {*}
+   */
+  getValue(key, def = null) {
+    return this.get(key, def)._value;
+  }
+
+  /**
+   * Отримати вкладене значення за шляхом 'a.b.c' з value
+   * @param {string} path
+   * @param {*} def
+   * @returns {*}
+   */
+  pathValue(path, def = null) {
+    return this.path(path, def)._value;
   }
 
   /**

@@ -173,13 +173,30 @@ export const firstKey = (object) => {
   return Object.keys(object)[0] || null;
 };
 
-export const copyText = async (element) => {
+/**
+ * --- Копіювання тексту з HTML елементу, або просто наданий текст ---
+ * @param target
+ * @param lang
+ * @returns {Promise<string>}
+ */
+export const copyText = async (target, lang = false) => {
   try {
-    const textToCopy = isHtmlElement(element) ? JSON.stringify(JSON.parse(element.innerText)) : element;
+    let textToCopy = "";
+
+    // Якщо передано HTML-елемент — беремо його текст
+    if (target instanceof HTMLElement) {
+      textToCopy = target.innerText.trim();
+    } else {
+      textToCopy = String(target).trim();
+    }
+
+    // Записуємо в буфер
     await navigator.clipboard.writeText(textToCopy);
-    console.log("Скопійовано");
+
+    return lang ? "copied" : "Скопійовано";
   } catch (err) {
-    console.error('Помилка копіювання! Error:', err);
+    console.error("Помилка копіювання! Error:", err);
+    return lang ? "error_copied" : "Помилка копіювання!";
   }
 };
 
