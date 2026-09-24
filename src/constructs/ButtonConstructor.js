@@ -1,4 +1,5 @@
 import {button, GUID} from "aprog";
+import "aprog/css/styles";
 
 /**
  * AprogJS Constructor
@@ -23,17 +24,19 @@ export const ButtonConstructor = {
     className = "",
     style = {},
     type = undefined,
+    title = undefined,
     text = "",
-    callback = () => {
-    },
+    callback = () => {},
+    disabled = false,
     ...props
   } = {}) {
     return this.is = button({
       id: id || GUID(),
-      class: `${this.class} btn ${className} disabled`.trim(),
+      class: `${this.class} aprog-btn ${className} ${disabled ? "disabled" : ""}`.trim(),
       style: style,
-      ...(type && {type: type}),
+      ...(type && {type}),
       value: text,
+      ...(title && {title}),
       onClick: callback,
       ...props
     });

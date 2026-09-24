@@ -1,4 +1,5 @@
 import {GUID, input} from "aprog";
+import "aprog/css/styles";
 
 /**
  * AprogJS Constructor
@@ -24,20 +25,21 @@ export const InputConstructor = {
     style = {},
     type = undefined,
     focus = false,
+    checked = false,
     placeholder = undefined,
     value = undefined,
     nameCallback = "onInput",
-    callback = () => {
-    },
+    callback = () => {},
     ...props
   } = {}) {
     this.is = input({
       id: id || GUID(),
-      class: `${this.class} input ${className}`.trim(),
+      class: `${this.class} aprog-input ${className}`.trim(),
       style: style,
-      ...(type && {type: type}),
-      ...(placeholder && {placeholder: placeholder}),
-      ...(value && {value: value}),
+      ...(type && {type}),
+      ...(checked && {checked}),
+      ...(placeholder && {placeholder}),
+      ...(value && {value}),
       [nameCallback]: callback,
       ...props
     });

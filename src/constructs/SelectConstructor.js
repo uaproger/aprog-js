@@ -1,4 +1,5 @@
 import {GUID, select} from "aprog";
+import "aprog/css/styles";
 
 /**
  * AprogJS Constructor
@@ -24,17 +25,17 @@ export const SelectConstructor = {
     style = {},
     option = undefined,
     options = undefined,
-    callback = () => {
-    },
+    nameCallback = "onChange",
+    callback = () => {},
     ...props
   } = {}) {
     return this.is = select({
       id: id || GUID(),
-      class: `${this.class} input ${className}`.trim(),
+      class: `${this.class} aprog-select ${className}`.trim(),
       style: style,
-      ...(option && {option: option}),
-      ...(options && {options: options}),
-      onChange: callback,
+      ...(option && {option}),
+      ...(options && {options}),
+      [nameCallback]: callback,
       ...props
     });
   },

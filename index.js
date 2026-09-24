@@ -24,6 +24,9 @@ export {
 export { prism } from "./src/prism.js";
 export { uniquePage } from "./src/pages.js";
 export { state, wrap, toast, abort, useTableDrag } from "./src/helper.js";
+export { loadTranslations, translate } from "./src/translator.js";
+export { svg } from "./src/svg.js";
+export { Modal, modal, closeAllModals, closeThisModal } from "./src/modal.js";
 export { default as AbortError } from './src/classes/AbortError.js';
 export { default as SmartWrapper } from './src/classes/SmartWrapper.js';
 export { default as StateWrapper } from './src/classes/StateWrapper.js';
