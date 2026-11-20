@@ -1,6 +1,6 @@
 {
   "name": "aprog",
-  "version": "2.3.40",
+  "version": "2.7.0",
   "description": "Допоміжна JavaScript-бібліотека для проєктів",
   "main": "index.js",
   "exports": {
@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "test": "jest",
+    "test": "node --test",
     "postinstall": "node ./publish.js",
     "publish-files": "node ./publish.js",
     "publish-force": "node ./publish.js --force"

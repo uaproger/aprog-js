@@ -30,6 +30,16 @@ export const date = (format, timestamp = Date.now()) => {
   return format.replace(/[YmdHis]/g, match => map[match]);
 };
 
+export const zerosArticle = (value, length = 5) => String(value ?? "").padStart(length, "0");
+
+export const getMonthName = (month, locale = "uk") => {
+  if (typeof month === "string" && /^\d{1,2}$/.test(month)) month = Number(month);
+  if (!Number.isInteger(month) || month < 1 || month > 12) return "";
+
+  return new Intl.DateTimeFormat(locale, {month: "long", timeZone: "UTC"})
+    .format(Date.UTC(2000, month - 1, 1));
+};
+
 export const chars = (word) => {
   const cyrillicToLatin = {
     'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'H', 'Д': 'D', 'Е': 'E', 'Є': 'Ye', 'Ж': 'Zh',

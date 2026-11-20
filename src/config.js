@@ -1,4 +1,7 @@
+import {loader} from "./loader.js";
+
 const config = {
+    loader,
     langLoader: null,
 };
 

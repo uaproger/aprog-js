@@ -1,5 +1,7 @@
+export {loader} from "./src/loader.js";
+export {connect} from "./src/connect.js";
 export {
-    options, attachCustomTitle, _get, _getAll, GUID, isEmpty, apState, date, pause, apFetch, parseCustomMarkup,
+    options, attachCustomTitle, _get, _getAll, GUID, isEmpty, apState, date, zerosArticle, getMonthName, pause, apFetch, parseCustomMarkup,
     chars, isNull, isFloat, isNumeric, isObject, elementToObject, copyText, scrollToTop, scrollToBottom,
     firstKey, isArray, checkArrays, isNumber, isString, isPromise, ucfirst, deepEqual, nodeListToObject
 } from './src/general.js';

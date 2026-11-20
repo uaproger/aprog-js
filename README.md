@@ -32,6 +32,61 @@ node node_modules/aprog/publish.js
 node node_modules/aprog/publish.js --force
 ```
 
+### Лоадер і запити до API
+
+`connect` автоматично показує повноекранний лоадер із п’ятьма анімованими смужками.
+Паралельні запити ділять один індикатор до завершення останнього.
+Для фонового запиту передай `loading: false`.
+
+```js
+import {connect, loader} from "aprog";
+
+const product = await connect({url: "/api/v1/products/2694"});
+const hide = loader.add({target: "#catalog", color: "#08676b"});
+try {
+    await connect({url: "/api/v1/categories", loading: false});
+} finally {
+    hide();
+}
+```
+
+`loader.add()` показує оверлей на всю сторінку. Для локального індикатора
+`target` приймає CSS-селектор або DOM-елемент. За замовчуванням вміст зберігається.
+Опція `replaceContent: true` очищає локальний контейнер під час створення індикатора.
+Функція, яку повертає `add()`, завершує конкретний виклик. Для простого парного
+виклику також є `loader.remove()`, який завершує найстаріший активний виклик.
+Колір за замовчуванням можна задати через CSS-властивість `--aprog-loader-color`.
+При ввімкненому зменшенні руху смужки статичні.
+
+`connect({url, method, body, headers, errorText, result, loading})` надсилає JSON і очікує
+JSON-відповідь із полем `success`. При успіху повертає `result ?? data`, при помилці
+показує toast і повертає `false`. Власний лоадер із методами `add()` та `remove()`
+можна підключити через `initAprog({loader: myLoader})`.
+
+Параметр `headers` приймає об’єкт, екземпляр `Headers` або масив пар
+`[назва, значення]`. Передані заголовки діють лише для цього запиту й мають
+пріоритет над стандартними незалежно від регістру назви. Тіло запиту серіалізується в JSON.
+
+```js
+await connect({
+    url: "/api/v1/orders",
+    headers: {
+        Authorization: `Bearer ${token}`,
+        "Accept-Language": "uk"
+    }
+});
+```
+
+### Форматування артикулів і місяців
+
+```js
+import {zerosArticle, getMonthName} from "aprog";
+
+zerosArticle(2694);      // "02694"
+getMonthName("03");      // "березень"
+getMonthName(3, "en");   // "March"
+```
+
 ### Basic Usage
 
 Підключення router:
