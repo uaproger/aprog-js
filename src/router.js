@@ -1,5 +1,7 @@
 import NotFound from "./NotFound.js";
 
+let routeContainer;
+
 /**
  * Ініціалізація роутера.
  * @param routes
@@ -9,6 +11,7 @@ import NotFound from "./NotFound.js";
  * @returns {Promise<void>}
  */
 export const router = async ({routes, main, message = "", props = {}}) => {
+    routeContainer = main;
     const renderRoute = async () => {
         const {routeComponent, props: routeProps} = useRoutes(routes);
         main.innerHTML = "";
@@ -39,7 +42,13 @@ const pushPage = (path, props) => {
     return pathname !== window.location.pathname || search !== window.location.search;
 };
 
-const scrollPageToTop = () => window.scrollTo({top: 0, behavior: "instant"});
+const scrollPageToTop = () => {
+    const options = {top: 0, behavior: "instant"};
+    for (let element = routeContainer; element; element = element.parentElement) {
+        if (element.scrollTop) element.scrollTo(options);
+    }
+    window.scrollTo(options);
+};
 
 /**
  * Перехід без рендеру.
