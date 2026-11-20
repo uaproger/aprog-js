@@ -1,5 +1,4 @@
 import {button, GUID} from "aprog";
-import "aprog/css/styles";
 
 /**
  * AprogJS Constructor
@@ -40,6 +39,15 @@ export const ButtonConstructor = {
       onClick: callback,
       ...props
     });
+  },
+
+  set disabled(disabled) {
+    if (disabled) this.target.classList.add("disabled");
+    else this.target.classList.remove("disabled");
+  },
+
+  get isDisabled() {
+    return this.target.classList.contains("disabled")
   },
 
   /**

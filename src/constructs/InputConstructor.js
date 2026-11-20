@@ -1,5 +1,4 @@
 import {GUID, input} from "aprog";
-import "aprog/css/styles";
 
 /**
  * AprogJS Constructor
@@ -46,6 +45,26 @@ export const InputConstructor = {
 
     if (focus) queueMicrotask(() => this.is.focus());
     return this.is;
+  },
+
+  clear() {
+    this.target.value = "";
+  },
+
+  set val(value) {
+    this.target.value = value;
+  },
+
+  get val() {
+    return this.target?.value;
+  },
+
+  set type(type) {
+    this.target.type = type;
+  },
+
+  get type() {
+    return this.target?.type;
   },
 
   /**

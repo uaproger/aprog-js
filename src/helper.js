@@ -105,3 +105,29 @@ export const useTableDrag = (selectorOrElement, onReorder = null, time = 1000) =
 
   return { getOrder };
 };
+
+/**
+ * Creates a callback with predefined arguments.
+ *
+ * @param {Function} fn
+ * @param {...*} args
+ * @returns {Function}
+ */
+export const callback = (fn, ...args) => (...extra) => fn(...args, ...extra);
+
+/**
+ * Universal function for JSON
+ * @param value
+ * @returns {*|string}
+ */
+export const json = (value) => {
+  if (typeof value === 'string') {
+    return JSON.parse(value);
+  }
+
+  if (value !== null && typeof value === 'object') {
+    return JSON.stringify(value);
+  }
+
+  return value;
+}

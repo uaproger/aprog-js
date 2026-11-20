@@ -1,5 +1,4 @@
 import {GUID, select} from "aprog";
-import "aprog/css/styles";
 
 /**
  * AprogJS Constructor

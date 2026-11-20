@@ -1351,6 +1351,230 @@ export const img = (attributes = {}) => {
   return img;
 };
 
+export const h1 = (attributes = {}) => {
+  let h1 = document.createElement("h1");
+  if (attributes) {
+    Object.entries(attributes).forEach(([name, attrValue]) => {
+      if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
+        const eventType = name.startsWith("mouse") ? name.toLowerCase() : name.slice(2).toLowerCase();
+        h1.addEventListener(eventType, attrValue);
+      } else {
+        switch (name) {
+          case "class":
+          case "className":
+            h1.className = String(attrValue);
+            break;
+          case "value":
+            if (isArray(attrValue)) {
+              attrValue.forEach((element) => {
+                isHtmlElement(element) ? h1.append(element) : h1.innerHTML = String(element);
+              });
+            } else {
+              if (isHtmlElement(attrValue)) {
+                h1.appendChild(attrValue);
+              } else {
+                h1.innerHTML = String(attrValue);
+                h1.title = String(attrValue);
+              }
+            }
+            break;
+          case "style":
+            Object.entries(attrValue).forEach(([styleName, styleValue]) => {
+              switch (styleName) {
+                case "zIndex":
+                  h1.style[styleName] = `99999${styleValue}`;
+                  break;
+                default:
+                  h1.style[styleName] = styleValue;
+                  break;
+              }
+            });
+            break;
+          default:
+            if (name.startsWith("data")) {
+              const kebabName = name
+                  .replace(/^data/, "data")
+                  .replace(/([A-Z])/g, "-$1")
+                  .toLowerCase();
+              h1.setAttribute(kebabName, String(attrValue));
+            } else {
+              h1.setAttribute(name, String(attrValue));
+            }
+        }
+      }
+    });
+  }
+  return h1;
+};
+
+export const h2 = (attributes = {}) => {
+  let h2 = document.createElement("h2");
+  if (attributes) {
+    Object.entries(attributes).forEach(([name, attrValue]) => {
+      if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
+        const eventType = name.startsWith("mouse") ? name.toLowerCase() : name.slice(2).toLowerCase();
+        h2.addEventListener(eventType, attrValue);
+      } else {
+        switch (name) {
+          case "class":
+          case "className":
+            h2.className = String(attrValue);
+            break;
+          case "value":
+            if (isArray(attrValue)) {
+              attrValue.forEach((element) => {
+                isHtmlElement(element) ? h2.append(element) : h2.innerHTML = String(element);
+              });
+            } else {
+              if (isHtmlElement(attrValue)) {
+                h2.appendChild(attrValue);
+              } else {
+                h2.innerHTML = String(attrValue);
+                h2.title = String(attrValue);
+              }
+            }
+            break;
+          case "style":
+            Object.entries(attrValue).forEach(([styleName, styleValue]) => {
+              switch (styleName) {
+                case "zIndex":
+                  h2.style[styleName] = `99999${styleValue}`;
+                  break;
+                default:
+                  h2.style[styleName] = styleValue;
+                  break;
+              }
+            });
+            break;
+          default:
+            if (name.startsWith("data")) {
+              const kebabName = name
+                  .replace(/^data/, "data")
+                  .replace(/([A-Z])/g, "-$1")
+                  .toLowerCase();
+              h2.setAttribute(kebabName, String(attrValue));
+            } else {
+              h2.setAttribute(name, String(attrValue));
+            }
+        }
+      }
+    });
+  }
+  return h2;
+};
+
+export const h3 = (attributes = {}) => {
+  let h3 = document.createElement("h3");
+  if (attributes) {
+    Object.entries(attributes).forEach(([name, attrValue]) => {
+      if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
+        const eventType = name.startsWith("mouse") ? name.toLowerCase() : name.slice(2).toLowerCase();
+        h3.addEventListener(eventType, attrValue);
+      } else {
+        switch (name) {
+          case "class":
+          case "className":
+            h3.className = String(attrValue);
+            break;
+          case "value":
+            if (isArray(attrValue)) {
+              attrValue.forEach((element) => {
+                isHtmlElement(element) ? h3.append(element) : h3.innerHTML = String(element);
+              });
+            } else {
+              if (isHtmlElement(attrValue)) {
+                h3.appendChild(attrValue);
+              } else {
+                h3.innerHTML = String(attrValue);
+                h3.title = String(attrValue);
+              }
+            }
+            break;
+          case "style":
+            Object.entries(attrValue).forEach(([styleName, styleValue]) => {
+              switch (styleName) {
+                case "zIndex":
+                  h3.style[styleName] = `99999${styleValue}`;
+                  break;
+                default:
+                  h3.style[styleName] = styleValue;
+                  break;
+              }
+            });
+            break;
+          default:
+            if (name.startsWith("data")) {
+              const kebabName = name
+                  .replace(/^data/, "data")
+                  .replace(/([A-Z])/g, "-$1")
+                  .toLowerCase();
+              h3.setAttribute(kebabName, String(attrValue));
+            } else {
+              h3.setAttribute(name, String(attrValue));
+            }
+        }
+      }
+    });
+  }
+  return h3;
+};
+
+export const element = (tag = "div", attributes = {}) => {
+  let el = document.createElement(tag);
+  if (attributes) {
+    Object.entries(attributes).forEach(([name, attrValue]) => {
+      if ((name.startsWith('on') || name.startsWith("mouse")) && typeof attrValue === 'function') {
+        const eventType = name.startsWith("mouse") ? name.toLowerCase() : name.slice(2).toLowerCase();
+        el.addEventListener(eventType, attrValue);
+      } else {
+        switch (name) {
+          case "class":
+          case "className":
+            el.className = String(attrValue);
+            break;
+          case "value":
+            if (isArray(attrValue)) {
+              attrValue.forEach((element) => {
+                isHtmlElement(element) ? el.append(element) : el.innerHTML = String(element);
+              });
+            } else {
+              if (isHtmlElement(attrValue)) {
+                el.appendChild(attrValue);
+              } else {
+                el.innerHTML = String(attrValue);
+                el.title = String(attrValue);
+              }
+            }
+            break;
+          case "style":
+            Object.entries(attrValue).forEach(([styleName, styleValue]) => {
+              switch (styleName) {
+                case "zIndex":
+                  el.style[styleName] = `99999${styleValue}`;
+                  break;
+                default:
+                  el.style[styleName] = styleValue;
+                  break;
+              }
+            });
+            break;
+          default:
+            if (name.startsWith("data")) {
+              const kebabName = name
+                  .replace(/^data/, "data")
+                  .replace(/([A-Z])/g, "-$1")
+                  .toLowerCase();
+              el.setAttribute(kebabName, String(attrValue));
+            } else {
+              el.setAttribute(name, String(attrValue));
+            }
+        }
+      }
+    });
+  }
+  return el;
+};
+
 export const apState = (initialValue) => {
   let state = initialValue;
   const getState = () => state;

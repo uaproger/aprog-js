@@ -106,24 +106,6 @@ export default NamePage;
 
 ```
 
-Приклад використання методів дебагу:
-
-```shell
-
-const int = 0;
-const array = [1,2,3,4];
-const boolean = true;
-
-// виводить всі змінні в одній групі вкладок
-dump(int, array, boolean);
-
-// or 
-
-// виводить всі змінні в одній групі вкладок та зупиняє подальше виконання скрипту
-dd(int, array, boolean);
-
-```
-
 Приклад використання gemini:
 
 у файл __.env__ потрібно додати api-ключ __VITE_GEMINI_KEY=you_api_gemini_key__
@@ -153,7 +135,6 @@ onInput: (event) => {
 
 Загальний список методів:
 
-- *dump(...args), dd(...args)*
 - *redirect(url, { newTab: bool, replace: bool }), reload(delaySeconds), validateEmail(email), validatePassword(password)*
 - *encrypt(str), decrypt(encryptedStr)*
 

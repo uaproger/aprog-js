@@ -1,5 +1,6 @@
 // Об'єкт для зберігання завантажених перекладів
 import {isEmpty} from "./general.js";
+import {getAprogConfig} from "./config.js";
 
 const translations = {};
 let translationsLoaded = false;
@@ -10,8 +11,20 @@ let translationsLoaded = false;
  */
 export const loadTranslations = async (language = "uk") => {
     try {
-        const translationsModule = await import(`../../lang/${language}.json`);
-        Object.assign(translations, translationsModule);
+        const { langLoader } = getAprogConfig();
+
+        if (!langLoader) {
+            throw new Error("langLoader is not configured");
+        }
+
+        const module = await langLoader(language);
+
+        Object.keys(translations).forEach(key => {
+            delete translations[key];
+        });
+
+        Object.assign(translations, module.default ?? module);
+
         translationsLoaded = true;
     } catch (error) {
         console.error(`Помилка завантаження перекладів для мови "${language}":`, error);
@@ -30,10 +43,15 @@ export const translate = (key, values = {}, def = "") => {
         console.warn(`Переклади ще не завантажені. Ключ: "${key}"`);
         return !isEmpty(def) ? def : key;
     }
-    let translation = translations[key] || key;
-    // Замінити підстановки {key} у перекладі
-    for (const [placeholder, value] of Object.entries(values)) {
-        translation = translation.replace(`:${placeholder}`, value.toString());
+
+    let translation = translations[key];
+    if (isEmpty(translation)) {
+        translation = !isEmpty(def) ? def : key;
     }
-    return !isEmpty(def) ? def : translation;
+
+    for (const [placeholder, value] of Object.entries(values)) {
+        translation = translation.replaceAll(`:${placeholder}`, value.toString());
+    }
+
+    return translation;
 };
