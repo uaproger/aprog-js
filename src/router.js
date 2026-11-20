@@ -32,13 +32,22 @@ export const router = async ({routes, main, message = "", props = {}}) => {
     await renderRoute();
 };
 
+const pushPage = (path, props) => {
+    const {pathname, search} = window.location;
+    window.history.pushState(props, "", path);
+
+    return pathname !== window.location.pathname || search !== window.location.search;
+};
+
+const scrollPageToTop = () => window.scrollTo({top: 0, behavior: "instant"});
+
 /**
  * Перехід без рендеру.
  * @param path
  * @param props
  */
 export const navigateTo = (path, props = {}) => {
-    window.history.pushState(props, "", path);
+    if (pushPage(path, props)) scrollPageToTop();
 };
 
 /**
@@ -48,9 +57,10 @@ export const navigateTo = (path, props = {}) => {
  * @returns {Promise<void>}
  */
 export const navi = async (path, props = {}) => {
-    window.history.pushState(props, "", path);
-
+    const pageChanged = pushPage(path, props);
+    const destination = window.location.href;
     await window.renderRoute();
+    if (pageChanged && window.location.href === destination) scrollPageToTop();
 };
 
 /**
